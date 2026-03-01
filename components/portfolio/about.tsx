@@ -14,7 +14,7 @@ export function About() {
 
         <div className="mt-10 flex flex-col items-start gap-10 lg:flex-row lg:gap-14">
           <div className="relative mx-auto shrink-0 lg:mx-0">
-            <div className="h-64 w-64 overflow-hidden rounded-2xl border-2 border-border lg:h-72 lg:w-72">
+            <div className="h-64 w-64 overflow-hidden rounded-full border-2 border-border lg:h-72 lg:w-72">
               <Image
                 src="/images/profile.jpg"
                 alt="Komal Raza - Full-Stack Engineer"

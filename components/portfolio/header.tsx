@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -19,7 +20,15 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <a href="#" className="font-mono text-sm font-semibold tracking-tight text-foreground">
-          KR
+          {/* KR */}
+          <Image
+            src="/images/signature.png"
+            alt="Komal Raza"
+            width={32}
+            height={8}
+            className="h-8 w-32 object-contain object-top"
+            priority
+          />
         </a>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">

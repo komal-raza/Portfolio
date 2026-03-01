@@ -15,7 +15,7 @@ export function Experience() {
         <div className="mt-10">
           <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
             <h3 className="text-lg font-semibold text-foreground">
-              Full-Stack Shopify App Developer
+              Full-Stack Engineer (Shopify & SaaS Developer)
             </h3>
             <span className="font-mono text-sm text-muted-foreground">
               LeoaTech

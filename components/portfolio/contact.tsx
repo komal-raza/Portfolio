@@ -5,19 +5,19 @@ import { Button } from "@/components/ui/button"
 const contactLinks = [
   {
     label: "Email",
-    href: "mailto:komal@example.com",
+    href: "mailto:komalraza.dev@gmail.com",
     icon: Mail,
-    display: "komal@example.com",
+    display: "komalraza.dev@gmail.com",
   },
   {
     label: "GitHub",
-    href: "https://github.com",
+    href: "https://github.com/komalraza",
     icon: Github,
     display: "github.com/komalraza",
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com",
+    href: "https://linkedin.com/in/komalraza",
     icon: Linkedin,
     display: "linkedin.com/in/komalraza",
   },
@@ -57,7 +57,7 @@ export function Contact() {
 
           <div className="mt-10">
             <Button asChild size="lg" className="rounded-md">
-              <a href="mailto:komal@example.com">Say Hello</a>
+              <a href="mailto:komalraza.dev@gmail.com">Say Hello</a>
             </Button>
           </div>
         </div>

@@ -10,7 +10,7 @@ const projects = [
       "Public Shopify App for pre-launch waitlists and viral referral campaigns with subscriptions and analytics.",
     stack: ["React", "Node.js", "PostgreSQL", "Shopify APIs", "Stripe"],
     role: "Full-stack development, Shopify app architecture, billing integration",
-    link: "#",
+    link: "https://apps.myshopify.com/viral-launch",
   },
   {
     title: "Advanced Media & Variant Management",
@@ -18,7 +18,7 @@ const projects = [
       "Custom Shopify app enabling multi-image and video support per product variant with dynamic theme integration.",
     stack: ["React", "Shopify Polaris", "Node.js", "Theme App Extensions"],
     role: "End-to-end development, Shopify API integration, theme customization",
-    link: "#",
+    link: "https://buffaloriver.co",
   },
   {
     title: "Library Management SaaS",
@@ -26,7 +26,7 @@ const projects = [
       "Full-stack SaaS with admin dashboards, subscriptions, analytics, and bulk inventory handling.",
     stack: ["Next.js", "Node.js", "PostgreSQL", "Stripe", "Tailwind CSS"],
     role: "Full product ownership, subscription billing, analytics dashboards",
-    link: "#",
+    link: "https://my-books-library-client.vercel.app/",
   },
   {
     title: "Shopify Theme Customization Demo",
@@ -34,7 +34,7 @@ const projects = [
       "Custom Online Store 2.0 theme built with Liquid, sections, blocks, metafields, and JavaScript.",
     stack: ["Liquid", "JavaScript", "CSS", "Shopify OS 2.0"],
     role: "Theme architecture, custom sections and blocks, metafield integration",
-    link: "#",
+    link: null,
   },
 ]
 
@@ -59,11 +59,13 @@ export function Projects() {
                 <h3 className="text-lg font-semibold text-foreground">
                   {project.title}
                 </h3>
-                <Button asChild variant="ghost" size="icon-sm" className="shrink-0 text-muted-foreground transition-colors group-hover:text-primary">
-                  <a href={project.link} aria-label={`View ${project.title}`}>
-                    <ExternalLink className="size-4" />
-                  </a>
-                </Button>
+                {project.link && (
+                  <Button asChild variant="ghost" size="icon-sm" className="shrink-0 text-muted-foreground transition-colors group-hover:text-primary">
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title}`}>
+                      <ExternalLink className="size-4" />
+                    </a>
+                  </Button>
+                )}
               </div>
 
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -71,7 +73,7 @@ export function Projects() {
               </p>
 
               <p className="mt-3 text-xs leading-relaxed text-muted-foreground/80">
-                <span className="font-medium text-muted-foreground">Impact:</span>{" "}
+                <span className="font-medium text-muted-foreground">Role:</span>{" "}
                 {project.role}
               </p>
 
@@ -80,7 +82,7 @@ export function Projects() {
                   <Badge
                     key={tech}
                     variant="outline"
-                    className="rounded-md text-xs font-normal text-muted-foreground"
+                    className="rounded-md text-primary text-xs font-normal "
                   >
                     {tech}
                   </Badge>
