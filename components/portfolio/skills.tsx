@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge"
 
 const skillGroups = [
   { label: "Frontend", skills: ["JavaScript", "HTML", "CSS", "React", "Vite", "Next.js", "Tailwind CSS", "Shopify Polaris", "TanStack Query", "React Router", "Shopify App Bridge"] },
-  { label: "Backend & Data", skills: ["Node.js", "Express.js", "PostgreSQL", "MongoDB", "Redis", "BullMQ", "Cron Jobs", "SQL"] },
+  { label: "Backend & Data", skills: ["Node.js", "Express.js", "PostgreSQL", "Redis", "BullMQ", "Cron Jobs", "SQL"] },
   { label: "Payments & Integrations", skills: ["Stripe", "Stripe Connect", "Shopify Billing API", "REST APIs", "GraphQL Admin API", "Cloudinary Transformations API", "Klaviyo Integration"] },
   { label: "Shopify", skills: ["Shopify App Development", "Shopify Admin API", "Shopify Webhooks", "Shopify App Store", "Shopify SaaS Applications"] },
   { label: "Tools", skills: ["Git", "GitHub", "Postman", "PgAdmin", "JIRA", "Linux", "ChatGPT", "Claude", "Gemini API"] },
