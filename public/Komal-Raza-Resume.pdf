@@ -1,0 +1,105 @@
+
+
+Komal Raza
+Islamabad, Pakistan
+
++92 320-5656633
+#
+razaa.komal@gmail.com
+ï
+linkedin.com/in/komal-raza
+Summary
+Full Stack Developer with 3.5+ years of professional experience building multi-tenant SaaS platforms and Shopify applications
+using React, Node.js, Express, and PostgreSQL. Experienced across merchant-facing Shopify apps, subscription and payment
+workflows, background job processing, and full-stack feature development from design through production deployment.
+WORK EXPERIENCE
+LeoaTechJan 2023 – Present
+Frontend Developer→Full Stack Engineer→Senior Full Stack EngineerRemote
+•
+Progressed from Frontend Developer to Senior Full Stack Engineer over 3 years, taking on backend ownership,
+architecture decisions, and Shopify app development along the way.
+•
+Built and shipped merchant-facing Shopify apps:  dashboards, product/media management, billing, webhooks, and
+Admin API integrations.
+•
+Developed full-stack SaaS features such as multi-tenant management, subscriptions, payments, notifications, analytics,
+bulk data processing, and administrative workflows.
+•
+Built background job pipelines (BullMQ, Redis, cron) for automated notifications and large-batch data processing.
+•
+Deployed and maintained production services on Vercel and Render with PostgreSQL, Redis, and background workers.
+•
+Improved frontend performance through efficient data fetching, caching, lazy loading, and reusable component design.
+DocSoft.aiAug 2022 – Dec 2022
+Front End Developer Intern (Next.js)Remote, Islamabad
+•
+Developed user interfaces using React and Next.js based on Figma designs to elevate the overall user experience.
+•
+Enhanced administrative dashboards and integrated robust backend APIs to facilitate seamless, real-time document
+data processing.
+Precise TechApr 2022 – Jul 2022
+React.js Developer InternRemote, Islamabad
+•
+Contributed to a production ERP application handling inventory, order tracking, and Role-Based Access Control.
+•
+Implemented new UI features, resolved critical bugs, and collaborated with global teams using Agile workflows.
+Technical Skills
+Languages:  JavaScript, SQL, HTML, CSS
+Frontend:  React, Vite, Next.js, Tailwind CSS, Shopify Polaris, Tanstack Query, React Router, Shopify App Bridge
+Backend:  Node.js, Express.js, PostgreSQL, MongoDB, Redis, BullMQ, Cron Jobs
+Payments & APIs:  Shopify Billing API, Stripe, Stripe Connect, Shopify Admin API, Shopify Webhooks, REST APIs,
+Graphql Admin API, Cloudinary transformations API, Klaviyo Integration
+Tools:  Git, GitHub, Postman, PgAdmin, JIRA, Linux
+Developer Productivity & AI Tools:  ChatGPT, Claude, Gemini API, Antigravity AI
+PROJECTS
+Quran Foundation LMS|React,Express.js, PostgreSQL, Tailwind CSS, Redis, BullMQ|LiveApr 2026 – Present
+•
+Extended a multi-centre LMS covering course management, enrollment, attendance, academic progress, and finance for
+Quran education centres.
+•
+Built bulk student onboarding from specific format file uploads with validation, error reporting, and automated
+profile-image processing.
+•
+Built audio homework submission and evaluation workflows for students to record and submit assignments through the
+portal.
+•
+Developed analytics, fee management, and automated notification features for centre administrators.
+
+Multi-Tenant Library Management SaaS|React, Node.js, Postgres, Tailwind CSS, Stripe|Live2024 – Present
+•
+Built a multi-tenant SaaS platform giving independent libraries dedicated environments to manage books, members,
+staff, bookings and daily operations.
+•
+Built subscription and payment workflows with Stripe, including automated platform-fee collection on library plans and
+overdue-fine payments.
+•
+Automated overdue-fine calculations, return reminders, and email/push notifications via scheduled background jobs,
+reducing manual administrative work.
+•
+Developed role-based admin interfaces with dynamic tenant branding and efficient data loading.
+Buffalo River Co.|Shopify App|Shopify, React,Node,Express,PostgreSQL, Cloudinary|Live2024 - 2025
+•
+Developed a custom Shopify app for managing product and variant media, galleries, masonry layouts, and
+section-specific media configurations with no theme code changes required.
+•
+Integrated Shopify Admin APIs and webhooks to sync product, collection, and media metadata with the app’s database.
+•
+Built a Cloudinary transformation engine generating responsive srcset images and section-specific presets, reducing
+storefront payload size.
+•
+Developed an in-app media editor that allows merchant to crop, resize, preview, and manage media assets across
+product and content pages.
+Xychros Pre-Launcher|Shopify App|Shopify Admin APIs, React.js, Node.js, PostgreSQL, Polaris|Live2023
+•
+Built a public Shopify app for pre-launch campaigns with configurable referral tiers and reward products.
+•
+Built a no-code merchant dashboard for configuring referral tiers, landing pages, and campaign states.
+•
+Built automated reward fulfillment using Shopify GraphQL/REST APIs to assign customer tags and generate tiered
+discount codes.
+•
+Integrated Shopify billing, customer management, discount rewards, Klaviyo lead sync, email notifications, and
+campaign analytics to provide merchants with an end-to-end product launch and customer acquisition workflow.
+EDUCATION
+University of NarowalDec 2017 – July 2021
+Bachelor of Science in Computer ScienceNarowal, Pakistan

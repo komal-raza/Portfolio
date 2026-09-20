@@ -8,18 +8,7 @@ import { Contact } from "@/components/portfolio/contact"
 import { Footer } from "@/components/portfolio/footer"
 
 export default function HomePage() {
-  return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Contact />
-      </main>
-      <Footer />
-    </>
-  )
+  return <><Header /><main><Hero /><Projects /><Experience /><Skills /><About /><Contact /></main><Footer /></>
 }
+
+

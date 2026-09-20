@@ -2,44 +2,7 @@ import Image from "next/image"
 import { Separator } from "@/components/ui/separator"
 
 export function About() {
-  return (
-    <section id="about" className="px-6 py-24 lg:py-32">
-      <div className="mx-auto max-w-5xl">
-        <div className="flex items-center gap-4">
-          <h2 className="whitespace-nowrap text-2xl font-bold text-foreground">
-            About Me
-          </h2>
-          <Separator className="shrink" />
-        </div>
-
-        <div className="mt-10 flex flex-col items-start gap-10 lg:flex-row lg:gap-14">
-          <div className="relative mx-auto shrink-0 lg:mx-0">
-            <div className="h-64 w-64 overflow-hidden rounded-full border-2 border-border lg:h-72 lg:w-72">
-              <Image
-                src="/images/profile.jpg"
-                alt="Komal Raza - Full-Stack Engineer"
-                width={288}
-                height={288}
-                className="h-full w-full object-cover object-top"
-                priority
-              />
-            </div>
-            <div className="absolute -bottom-3 -right-3 h-20 w-20 rounded-xl border border-primary/30 bg-primary/10" />
-          </div>
-
-          <div className="space-y-4 text-sm leading-relaxed text-muted-foreground lg:text-base">
-            <p>
-              {"I'm a Full-Stack Engineer with over 2.5 years of experience building production-grade Shopify apps, SaaS platforms, and e-commerce solutions. I specialize in architecting systems that solve real business problems for merchants and product teams."}
-            </p>
-            <p>
-              My core work revolves around custom and public Shopify app development, subscription billing systems, analytics dashboards, and API integrations. I focus on writing clean, maintainable code that scales with business growth.
-            </p>
-            <p>
-              {"I've worked across the full stack \u2014 from building responsive UIs with React and Tailwind CSS to designing RESTful APIs with Node.js and managing PostgreSQL databases. I care deeply about developer experience, code quality, and shipping features that matter."}
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
+  return <section id="about" className="px-6 py-16 lg:py-20"><div className="mx-auto max-w-5xl"><div className="flex items-center gap-4"><h2 className="whitespace-nowrap text-2xl font-bold text-foreground">About Me</h2><Separator className="shrink" /></div><div className="mt-8 flex flex-col items-start gap-8 lg:flex-row lg:gap-12"><div className="relative mx-auto shrink-0 lg:mx-0"><div className="h-56 w-56 overflow-hidden rounded-full border-2 border-border lg:h-64 lg:w-64"><Image src="/images/profile.jpg" alt="Komal Raza - Full-Stack Engineer" width={256} height={256} className="h-full w-full object-cover object-top" /></div></div><div className="max-w-2xl space-y-4 text-base leading-7 text-muted-foreground"><p>I'm a Full-Stack Engineer with 3.5+ years of professional experience building multi-tenant SaaS platforms and Shopify applications. At LeoaTech, I've grown from frontend development into owning backend architecture, APIs, database design, background jobs, billing, and production delivery.</p><p>I enjoy turning business requirements into practical, reliable products. My recent work spans merchant-facing Shopify apps, Stripe-powered subscriptions, automated notifications, bulk processing, and an LMS used by multiple education centers. I'm open to Full-Stack Engineer opportunities, freelance, and contract projects focused on SaaS and Shopify.</p><div className="border-l-2 border-primary/50 pl-4 text-sm"><span className="font-medium text-foreground">Education:</span> Bachelor of Science in Computer Science, University of Narowal · 2017 – 2021</div></div></div></div></section>
 }
+
+
