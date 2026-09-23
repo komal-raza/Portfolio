@@ -1,0 +1,33 @@
+export type CaseStudy = {
+  slug: string
+  title: string
+  eyebrow: string
+  tagline: string
+  category: string
+  goal: string
+  contribution: string
+  result: string
+  features: { title: string; description: string }[]
+  role: string
+  focus: string
+  delivery: string
+  techStack: string[]
+  period: string
+  link?: string
+}
+
+export const caseStudies: CaseStudy[] = [
+  { slug: "library-management-saas", title: "Library Management SaaS", eyebrow: "CASE STUDY", tagline: "A multi-tenant library platform for everyday operations, payments, and automated reminders.", category: "Full-stack · multi-tenant", goal: "Give each library an operational workspace while keeping tenant data isolated across books, members, staff, bookings, and payments.", contribution: "Built the React and Node.js product surface, tenant-aware data flows, booking operations, scheduled jobs, bulk imports, notifications, and Stripe Connect payment workflows.", result: "Libraries can manage their catalog and bookings from an isolated workspace, with automated fines and reminders and background processing for imports and notifications.", features: [{ title: "Tenant isolation", description: "Custom subdomain routing and scoped data access for each library workspace." }, { title: "Operations dashboard", description: "Catalog, members, staff, and bookings organized for daily workflows." }, { title: "Automated jobs", description: "Daily fines and return reminders run through scheduled background work." }, { title: "Payments", description: "Stripe Connect supports split payments and library subscription flows." }], role: "Full-stack engineer", focus: "Multi-tenant SaaS · payments", delivery: "Product build", techStack: ["React", "Node.js", "PostgreSQL", "Tailwind", "TanStack Query", "BullMQ", "Redis", "Stripe Connect"], period: "2024 – Present", link: "https://my-books-library-client.vercel.app/" },
+  { slug: "quran-foundation-lms", title: "Quran Foundation LMS", eyebrow: "CASE STUDY", tagline: "A multi-tenant Islamic learning platform for course delivery, progress, and center operations.", category: "Full-stack · learning platform", goal: "Extend a multi-center LMS with the workflows needed for courses, enrollment, attendance, academic progress, and finance.", contribution: "Built validated bulk student onboarding with profile-image processing, audio homework workflows, analytics, fee management, and automated notifications.", result: "The platform supports structured learning operations across centers, from onboarding and coursework to progress tracking and finance workflows.", features: [{ title: "Student onboarding", description: "Validated bulk imports with profile-image processing for faster setup." }, { title: "Homework workflows", description: "Audio homework handling keeps learning activity inside the platform." }, { title: "Center operations", description: "Course, enrollment, attendance, and fee workflows in one system." }, { title: "Background processing", description: "Redis and BullMQ support queued notifications and long-running work." }], role: "Full-stack engineer", focus: "LMS · multi-tenant workflows", delivery: "Platform extension", techStack: ["React", "Express.js", "PostgreSQL", "Tailwind", "Redis", "BullMQ"], period: "2026 – Present" },
+  { slug: "buffalo-river-co", title: "Buffalo River & Co.", eyebrow: "CASE STUDY", tagline: "A custom Shopify app for variant-level product media and storefront galleries.", category: "Shopify app · full-stack", goal: "Make product imagery and video manageable at the variant level without requiring merchants to change theme code.", contribution: "Built galleries, masonry layouts, section configurations, Shopify Admin API and webhook sync, Cloudinary transformations, and an in-app editor for crop, resize, and preview workflows.", result: "Merchants can manage richer variant media and render it in storefront sections through a focused app workflow and Theme App Blocks.", features: [{ title: "Variant media", description: "Product and variant galleries support images and video in one workflow." }, { title: "Theme App Blocks", description: "Storefront sections render media without direct theme-code changes." }, { title: "Media pipeline", description: "Cloudinary transformations generate responsive image presets." }, { title: "Editor workflow", description: "Crop, resize, and preview tools keep media preparation in context." }], role: "Shopify app engineer", focus: "Shopify · media systems", delivery: "Custom app", techStack: ["Shopify Admin API", "React", "Node.js", "Express.js", "PostgreSQL", "Cloudinary", "Theme App Blocks"], period: "2024 – 2025", link: "https://buffaloriver.co" },
+  { slug: "xychros-pre-launcher", title: "Xychros Pre-Launcher", eyebrow: "CASE STUDY", tagline: "A Shopify pre-launch waitlist and viral referral campaign app for product teams.", category: "Shopify app · full-stack", goal: "Help merchants collect pre-launch demand and turn referrals into configurable campaign rewards.", contribution: "Built referral tiers, reward products, landing pages, campaign states, Shopify billing, GraphQL and REST integrations, Klaviyo lead sync, notifications, customer tags, discount rewards, and campaign analytics.", result: "Merchants can run configurable pre-launch campaigns with referral tracking, rewards, lead synchronization, and analytics in one Shopify app.", features: [{ title: "Referral tracking", description: "Campaign referrals and tier progress are captured in the app flow." }, { title: "Reward tiers", description: "Merchants configure reward products and campaign states." }, { title: "Lead sync", description: "Klaviyo integration connects campaign activity to marketing workflows." }, { title: "Analytics", description: "A campaign dashboard gives teams visibility into pre-launch activity." }], role: "Shopify app engineer", focus: "Growth workflows · integrations", delivery: "Public Shopify app", techStack: ["Shopify Admin API", "React", "Node.js", "PostgreSQL", "Polaris", "Klaviyo"], period: "2023", link: "https://apps.myshopify.com/viral-launch" },
+]
+
+export const placeholderSlides = [
+  { label: "Primary product view", caption: "Add a representative product screenshot here." },
+  { label: "Workflow detail", caption: "Add a focused workflow or dashboard screenshot here." },
+  { label: "Storefront result", caption: "Add the customer-facing result or storefront view here." },
+]
+
+export function getCaseStudy(slug: string) { return caseStudies.find((study) => study.slug === slug) }
+export function getRelatedStudies(slug: string) { return caseStudies.filter((study) => study.slug !== slug).slice(0, 2) }
