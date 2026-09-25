@@ -25,8 +25,9 @@ export function CaseStudyCarousel({ slides, title }: Props) {
       <div className="relative aspect-[16/8] overflow-hidden rounded-2xl border border-primary/20 bg-card shadow-2xl">
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[radial-gradient(circle_at_50%_20%,oklch(0.27_0.04_145),transparent_55%)] px-6 text-center">
           <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">{current.label}</span>
-          <span className="max-w-md text-2xl font-medium tracking-tight text-foreground/90 md:text-4xl">Screenshot placeholder</span>
-          <span className="max-w-sm text-sm leading-6 text-muted-foreground">Replace this panel with a real project screenshot when available.</span>
+          <span className="max-w-2xl text-2xl font-medium tracking-tight text-foreground/90 md:text-4xl">{current.headline}</span>
+          <span className="max-w-xl text-sm leading-6 text-muted-foreground">{current.body}</span>
+          {current.bullets.length > 0 && <ul className="mt-2 grid max-w-2xl gap-2 text-left text-xs leading-5 text-muted-foreground md:grid-cols-2">{current.bullets.map((bullet) => <li key={bullet}>• {bullet}</li>)}</ul>}
         </div>
         <div className="absolute bottom-4 left-4 rounded-full border border-border bg-background/70 px-3 py-1 font-mono text-[10px] text-muted-foreground backdrop-blur">{String(active + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</div>
         <div className="absolute bottom-3 right-3 flex gap-2">
