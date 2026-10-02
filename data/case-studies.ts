@@ -122,7 +122,7 @@ export const caseStudies: CaseStudy[] = [
     delivery: "Team of 4 — Team Lead, Backend Intern, Shopify Frontend Developer, and myself",
     techStack: ["React.js", "Redux Toolkit", "React Query", "Custom CSS", "Node.js", "Express.js", "PostgreSQL", "Shopify Admin API", "Shopify Billing API", "Shopify Webhooks", "Shopify Polaris"],
     period: "2023",
-    link: "https://app.shopify.com/viral-launch",
+    link: "https://apps.shopify.com/viral-launch",
     slides: [
       { label: "01 · Public listing", headline: "Live Shopify App Store Listing", body: "The app's public Shopify App Store listing shows the Viral Launch brand, free-plan availability, and a preview of the merchant analytics dashboard under Xychros Technologies LLC.", bullets: ["Public Shopify app", "Free-plan availability", "Merchant analytics preview"], caption: "Image placeholder — replace with virallaunch1.jpeg when the asset is available." },
       { label: "02 · Analytics", headline: "Merchant Home Dashboard", body: "Four KPI tiles for campaigns, referrals, revenue, and clicks sit above a six-month time-series chart, with per-product pre-launch revenue cards below.", bullets: ["Campaigns", "Referrals", "Revenue and clicks", "Six-month trends"], caption: "Image placeholder — replace with viral-app.png when the asset is available." },
