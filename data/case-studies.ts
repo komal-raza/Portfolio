@@ -103,7 +103,32 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: "xychros-pre-launcher", title: "Xychros Pre-Launcher", eyebrow: "CASE STUDY", tagline: "A Shopify pre-launch waitlist and viral referral campaign app for product teams.", category: "Shopify app · full-stack", goal: "Help merchants collect pre-launch demand and turn referrals into configurable campaign rewards.", contribution: "Built referral tiers, reward products, landing pages, campaign states, Shopify billing, GraphQL and REST integrations, Klaviyo lead sync, notifications, customer tags, discount rewards, and campaign analytics.", result: "Merchants can run configurable pre-launch campaigns with referral tracking, rewards, lead synchronization, and analytics in one Shopify app.", features: [{ title: "Referral tracking", description: "Campaign referrals and tier progress are captured in the app flow." }, { title: "Reward tiers", description: "Merchants configure reward products and campaign states." }, { title: "Lead sync", description: "Klaviyo integration connects campaign activity to marketing workflows." }, { title: "Analytics", description: "A campaign dashboard gives teams visibility into pre-launch activity." }], role: "Shopify app engineer", focus: "Growth workflows · integrations", delivery: "Public Shopify app", techStack: ["Shopify Admin API", "React", "Node.js", "PostgreSQL", "Polaris", "Klaviyo"], period: "2023", link: "https://apps.myshopify.com/viral-launch",
+    slug: "xychros-pre-launcher",
+    title: "Launch Your Product",
+    eyebrow: "CASE STUDY",
+    tagline: "A public Shopify app that lets merchants build pre-launch waitlists and viral referral campaigns — driving organic customer acquisition before a product ever goes live.",
+    category: "Shopify SaaS · Public App",
+    goal: "Most Shopify merchants have no native way to build excitement before a product launch. Launch Your Product gives merchants a self-serve dashboard to create pre-launch waitlist campaigns with viral referral loops, reward milestones, and automated discount fulfillment inside Shopify.",
+    contribution: "Owned the SaaS billing infrastructure end-to-end, integrating the Shopify Billing API for Free, Starter, Pro, and Enterprise plans plus an optional phone-collection add-on. Also built Polaris-based merchant UI, campaign management screens, and analytics views with React, Redux Toolkit, and React Query.",
+    result: "The app shipped as a live, publicly listed Shopify App Store product under Xychros Technologies LLC. Native Shopify plan management lets the product operate as a sustainable SaaS without handling raw payment credentials or third-party gateways.",
+    features: [
+      { title: "Viral Campaign Builder", description: "No-code dashboard to create, configure, and toggle pre-launch campaigns with customizable hero banners, landing page templates, and draft or active states." },
+      { title: "Tiered Reward Engine", description: "Referral milestone tiers map thresholds such as 5, 10, and 15 referrals to unique Shopify discount codes, with customer segments created through the GraphQL Admin API." },
+      { title: "SaaS Billing Integration", description: "Native Shopify Billing API implementation for Free, Starter, Pro, and Enterprise plans plus add-ons, with subscription state persisted in PostgreSQL." },
+      { title: "Revenue Attribution Dashboard", description: "React Query-powered Polaris views aggregate campaign KPIs, referral conversions, click logs, and revenue attribution for merchants." },
+    ],
+    role: "Full Stack Shopify App Developer",
+    focus: "SaaS Billing Infrastructure · Merchant Dashboard UI · Analytics Views · Campaign Management Frontend",
+    delivery: "Team of 4 — Team Lead, Backend Intern, Shopify Frontend Developer, and myself",
+    techStack: ["React.js", "Redux Toolkit", "React Query", "Custom CSS", "Node.js", "Express.js", "PostgreSQL", "Shopify Admin API", "Shopify Billing API", "Shopify Webhooks", "Shopify Polaris"],
+    period: "2023",
+    link: "https://apps.myshopify.com/viral-launch",
+    slides: [
+      { label: "01 · Public listing", headline: "Live Shopify App Store Listing", body: "The app's public Shopify App Store listing shows the Viral Launch brand, free-plan availability, and a preview of the merchant analytics dashboard under Xychros Technologies LLC.", bullets: ["Public Shopify app", "Free-plan availability", "Merchant analytics preview"], caption: "Image placeholder — replace with virallaunch1.jpeg when the asset is available." },
+      { label: "02 · Analytics", headline: "Merchant Home Dashboard", body: "Four KPI tiles for campaigns, referrals, revenue, and clicks sit above a six-month time-series chart, with per-product pre-launch revenue cards below.", bullets: ["Campaigns", "Referrals", "Revenue and clicks", "Six-month trends"], caption: "Image placeholder — replace with viral-app.png when the asset is available." },
+      { label: "03 · Campaign builder", headline: "New Campaign & Rewards Settings", body: "Merchants configure discount type and create up to four referral reward tiers, each with a threshold and unique discount code such as 05OFF or 10OFF.", bullets: ["Percentage or dollar discount", "Up to four reward tiers", "Referral threshold and discount code"], caption: "Image placeholder — replace with viral-app2.png when the asset is available." },
+      { label: "04 · Full loop", headline: "Merchant-to-Customer Referral Loop", body: "A composite view connects the campaign list, creation form, and live storefront landing page with referral links, social sharing, milestone progress, and reward gift cards.", bullets: ["Campaign list and controls", "Unique referral link", "Social share buttons", "5 → 10 → 15 friend milestones"], caption: "Image placeholder — replace with viral-launch.png when the asset is available." },
+    ],
   },
 ]
 
