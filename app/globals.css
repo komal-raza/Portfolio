@@ -4,25 +4,25 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.13 0.025 155);
-  --foreground: oklch(0.93 0.005 260);
-  --card: oklch(0.17 0.025 155);
-  --card-foreground: oklch(0.93 0.005 260);
-  --popover: oklch(0.17 0.005 260);
-  --popover-foreground: oklch(0.93 0.005 260);
-  --primary: oklch(0.83 0.18 125);
-  --primary-foreground: oklch(0.13 0.005 260);
-  --secondary: oklch(0.22 0.005 260);
-  --secondary-foreground: oklch(0.88 0.005 260);
-  --muted: oklch(0.22 0.005 260);
-  --muted-foreground: oklch(0.72 0.01 260);
-  --accent: oklch(0.75 0.12 175);
-  --accent-foreground: oklch(0.13 0.005 260);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.26 0.005 260);
-  --input: oklch(0.26 0.005 260);
-  --ring: oklch(0.75 0.12 175);
+  --background: oklch(0.98 0.008 90);
+  --foreground: oklch(0.18 0.02 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.02 250);
+  --primary: oklch(0.48 0.14 230);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.94 0.015 225);
+  --secondary-foreground: oklch(0.24 0.03 250);
+  --muted: oklch(0.94 0.015 225);
+  --muted-foreground: oklch(0.40 0.025 250);
+  --accent: oklch(0.78 0.13 85);
+  --accent-foreground: oklch(0.22 0.03 70);
+  --destructive: oklch(0.58 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.87 0.02 230);
+  --input: oklch(0.87 0.02 230);
+  --ring: oklch(0.48 0.14 230);
   --chart-1: oklch(0.75 0.12 175);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -37,6 +37,26 @@
   --sidebar-accent-foreground: oklch(0.88 0.005 260);
   --sidebar-border: oklch(0.26 0.005 260);
   --sidebar-ring: oklch(0.75 0.12 175);
+}
+
+.dark {
+  --background: oklch(0.15 0.02 250);
+  --foreground: oklch(0.94 0.01 90);
+  --card: oklch(0.19 0.025 250);
+  --card-foreground: oklch(0.94 0.01 90);
+  --popover: oklch(0.19 0.025 250);
+  --popover-foreground: oklch(0.94 0.01 90);
+  --primary: oklch(0.72 0.12 205);
+  --primary-foreground: oklch(0.14 0.02 250);
+  --secondary: oklch(0.25 0.025 250);
+  --secondary-foreground: oklch(0.92 0.01 90);
+  --muted: oklch(0.25 0.025 250);
+  --muted-foreground: oklch(0.75 0.015 250);
+  --accent: oklch(0.78 0.13 85);
+  --accent-foreground: oklch(0.18 0.02 70);
+  --border: oklch(0.32 0.025 250);
+  --input: oklch(0.32 0.025 250);
+  --ring: oklch(0.72 0.12 205);
 }
 
 @theme inline {
@@ -92,6 +112,7 @@
   }
 }
 
+/* Motion uses opacity and position only; the palette stays solid in both themes. */
 @keyframes fadeSlideUp {
   from {
     opacity: 0;
