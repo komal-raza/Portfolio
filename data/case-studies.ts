@@ -119,7 +119,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     role: "Full Stack Shopify App Developer",
     focus: "SaaS Billing Infrastructure · Merchant Dashboard UI · Analytics Views · Campaign Management Frontend",
-    delivery: "Team of 4 — Team Lead, Backend Intern, Shopify Frontend Developer, and myself",
+    delivery: "Team of 4 — Team Lead, Backend Intern, Shopify Frontend Developer, and Shopify Full Stak Developer",
     techStack: ["React.js", "Redux Toolkit", "React Query", "Custom CSS", "Node.js", "Express.js", "PostgreSQL", "Shopify Admin API", "Shopify Billing API", "Shopify Webhooks", "Shopify Polaris", "Klaviyo", "Nodemailer"],
     period: "2023",
     link: "https://apps.shopify.com/viral-launch",
