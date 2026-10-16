@@ -27,7 +27,7 @@ export function Hero() {
             </a>
           </Button>
         </div>
-        <div className="mt-12 opacity-0 animate-[fadeIn_0.5s_ease-out_1s_forwards]">
+        <div className="flex justify-center items-center mt-12 opacity-0 animate-[fadeIn_0.5s_ease-out_1s_forwards]">
           <a
             href="#projects"
             className="text-muted-foreground transition-colors hover:text-primary"

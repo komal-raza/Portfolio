@@ -8,5 +8,5 @@ import { Contact } from "@/components/portfolio/contact"
 import { Footer } from "@/components/portfolio/footer"
 
 export default function HomePage() {
-  return <><Header /><main><Hero /><Projects /><Experience /><Skills /><About /><Contact /></main><Footer /></>
+  return <><Header /><main><Hero /><About/><Projects /><Experience /><Skills /><Contact /></main><Footer /></>
 }
