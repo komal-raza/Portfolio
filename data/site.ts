@@ -1,5 +1,11 @@
 export type NavItem = { label: string; href: string }
 
+export type SocialLink = {
+  platform: 'LinkedIn' | 'GitHub' | 'Instagram' | 'X' | 'TikTok' | 'YouTube' | 'Facebook' | 'Email'
+  handle: string
+  url: string
+}
+
 export type TimelineEntry = {
   org: string
   role: string
@@ -210,6 +216,49 @@ export const site = {
       'Something else',
     ],
   },
+
+  socials: [
+    {
+      platform: 'LinkedIn',
+      handle: 'in/komal-raza',
+      url: 'https://www.linkedin.com/in/komal-raza',
+    },
+    {
+      platform: 'GitHub',
+      handle: '@komal-raza',
+      url: 'https://github.com/komal-raza',
+    },
+    {
+      platform: 'Instagram',
+      handle: '',
+      url: '',
+    },
+    {
+      platform: 'X',
+      handle: '',
+      url: '',
+    },
+    {
+      platform: 'TikTok',
+      handle: '',
+      url: '',
+    },
+    {
+      platform: 'YouTube',
+      handle: '',
+      url: '',
+    },
+    {
+      platform: 'Facebook',
+      handle: '',
+      url: '',
+    },
+    {
+      platform: 'Email',
+      handle: 'razaa.komal@gmail.com',
+      url: 'mailto:razaa.komal@gmail.com',
+    },
+  ] satisfies SocialLink[],
 } as const
 
 export type Site = typeof site

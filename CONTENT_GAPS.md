@@ -44,4 +44,10 @@ Per Section 3 and Section 9 of `prompt/REDESIGN_PROMPT.md`, no facts, metrics, t
 - **Current state:** `Buffalo River Co.` (`buffalo-river-co`) and `Xychros Pre-Launcher` (`xychros-pre-launcher`) were delivered for clients in the USA and Australia through LeoaTech, but which project belongs to which country is not yet specified. Both leave `clientRegion` unset so no unverified region renders.
 - **TODO:** Set `clientRegion: 'USA'` or `clientRegion: 'Australia'` on `buffalo-river-co`, `xychros-pre-launcher` (and any other client projects) in `data/projects.ts`. Once set, project rows and case study summary strips will display `"Client: {clientRegion} · Delivered through LeoaTech"`, and the Home Featured Work section will display `"Delivered for clients in {unique regions}"` once at least two projects have a region.
 
+## 9. Social profiles (`site.socials` in `data/site.ts`)
+
+- **Current state:** `LinkedIn` (`https://www.linkedin.com/in/komal-raza`), `GitHub` (`https://github.com/komal-raza`) and `Email` (`razaa.komal@gmail.com`) are prefilled and rendered in the "Find me online" grid on `/contact`. `Instagram`, `X`, `TikTok`, `YouTube` and `Facebook` have empty `url` strings and are hidden.
+- **TODO:** Fill in `handle` and `url` for any of `Instagram`, `X`, `TikTok`, `YouTube` or `Facebook` in `data/site.ts` (`site.socials`) to render those cards on `/contact`.
+
+
 
