@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Github, Linkedin, Mail, MapPin } from 'lucide-react'
 import { site } from '@/data/site'
 import { services } from '@/data/services'
+import { certificates } from '@/data/certificates'
 
 const iconProps = { 'aria-hidden': true, strokeWidth: 1.5, className: 'size-4 shrink-0' } as const
 
@@ -26,6 +27,13 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+            {certificates.length > 0 && (
+              <li>
+                <Link href="/certificates" className="fs-small text-muted no-underline hover:text-text">
+                  Certificates
+                </Link>
+              </li>
+            )}
           </ul>
         </nav>
 

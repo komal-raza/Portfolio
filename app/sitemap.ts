@@ -1,11 +1,20 @@
 import type { MetadataRoute } from 'next'
 import { services } from '@/data/services'
 import { caseStudies } from '@/data/projects'
+import { certificates } from '@/data/certificates'
 import { absoluteUrl } from '@/lib/seo'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
-  const staticPaths = ['/', '/about', '/services', '/projects', '/resume', '/contact']
+  const staticPaths = [
+    '/',
+    '/about',
+    '/services',
+    '/projects',
+    '/resume',
+    '/contact',
+    ...(certificates.length > 0 ? ['/certificates'] : []),
+  ]
 
   return [
     ...staticPaths.map((path) => ({

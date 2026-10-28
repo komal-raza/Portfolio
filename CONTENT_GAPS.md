@@ -34,10 +34,10 @@ Per Section 3 and Section 9 of `prompt/REDESIGN_PROMPT.md`, no facts, metrics, t
 - **Current state:** The previous header, footer, contact section and resume text used `razaa.komal@gmail.com`, while the old case-study template had a `mailto:komalraza.dev@gmail.com` link. The redesigned site uses `razaa.komal@gmail.com` everywhere.
 - **TODO:** Update `site.email` in `data/site.ts` if you prefer `komalraza.dev@gmail.com`.
 
-## 7. Client testimonials & certificates
+## 7. Client testimonials & certificates (`data/certificates.ts`)
 
-- **Current state:** None provided in the repo or brief. No testimonial or certificate sections are rendered anywhere on the site.
-- **TODO:** When you have written client quotes with permission to publish, add them to `data/site.ts`.
+- **Current state:** `data/certificates.ts` starts with an empty array (`certificates: Certificate[] = []`) and `/certificates` exists as a route. Because the array is empty, the Certificates link in the footer and the compact strip on `/about` are hidden. No testimonials are provided in the repo or brief.
+- **TODO:** Populate `data/certificates.ts` with `{ title, issuer, date, credentialUrl, image? }` entries (for example, pointing to the PDFs in `public/certificates/` or external verification URLs) to show the compact strip on `/about` and the footer link to `/certificates`. When you have written client quotes with permission to publish, add them to `data/site.ts`.
 
 ## 8. Client regions (`clientRegion` in `data/projects.ts`)
 

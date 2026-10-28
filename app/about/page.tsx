@@ -1,5 +1,7 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { site } from '@/data/site'
+import { certificates } from '@/data/certificates'
 import { pageMetadata, personJsonLd } from '@/lib/seo'
 import { CtaBand } from '@/components/ui/cta-band'
 import { TechStackGrid } from '@/components/sections/tech-stack'
@@ -149,7 +151,10 @@ export default function AboutPage() {
       </section>
 
       {/* Tech stack */}
-      <section className="section-y" aria-labelledby="about-stack-heading">
+      <section
+        className={certificates.length > 0 ? 'section-y border-b border-border' : 'section-y'}
+        aria-labelledby="about-stack-heading"
+      >
         <div className="container-site">
           <h2 id="about-stack-heading">Tech stack</h2>
           <p className="lead mt-3">
@@ -159,6 +164,55 @@ export default function AboutPage() {
           <TechStackGrid />
         </div>
       </section>
+
+      {/* Certificates compact strip (shown only when certificates exist) */}
+      {certificates.length > 0 && (
+        <section className="section-y" aria-labelledby="about-certificates-heading">
+          <div className="container-site">
+            <div className="flex flex-col justify-between gap-4 pb-8 md:flex-row md:items-end">
+              <div>
+                <h2 id="about-certificates-heading">Certificates</h2>
+                <p className="lead mt-3">
+                  Technical credentials and completed coursework.
+                </p>
+              </div>
+              <Link
+                href="/certificates"
+                className="font-heading text-sm font-semibold text-link underline"
+              >
+                All certificates
+              </Link>
+            </div>
+
+            <ul className="divide-y divide-border border-y border-border">
+              {certificates.slice(0, 4).map((cert) => (
+                <li
+                  key={`${cert.title}-${cert.issuer}`}
+                  className="grid gap-3 py-5 md:grid-cols-[1.4fr_1fr_auto] md:items-baseline md:gap-8"
+                >
+                  <p className="font-heading text-base font-semibold text-text">{cert.title}</p>
+                  <p className="fs-small text-muted">
+                    {cert.issuer}
+                    {cert.date ? ` · ${cert.date}` : ''}
+                  </p>
+                  <div className="md:text-right">
+                    {cert.credentialUrl && (
+                      <a
+                        href={cert.credentialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="fs-small font-heading font-semibold text-link underline"
+                      >
+                        Verify credential
+                      </a>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       <CtaBand />
     </>
