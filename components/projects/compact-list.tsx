@@ -56,3 +56,4 @@ export function CompactProjectList({ projects }: { projects: Project[] }) {
     </div>
   )
 }
+

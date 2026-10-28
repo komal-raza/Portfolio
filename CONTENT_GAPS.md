@@ -38,3 +38,4 @@ Per Section 3 and Section 9 of `prompt/REDESIGN_PROMPT.md`, no facts, metrics, t
 
 - **Current state:** None provided in the repo or brief. No testimonial or certificate sections are rendered anywhere on the site.
 - **TODO:** When you have written client quotes with permission to publish, add them to `data/site.ts`.
+

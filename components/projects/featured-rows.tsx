@@ -92,3 +92,4 @@ export function FeaturedProjectRows({ items }: { items: ProjectWithCover[] }) {
     </div>
   )
 }
+
