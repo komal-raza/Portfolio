@@ -26,7 +26,7 @@ export const site = {
     chip: 'Full-Stack Engineer · SaaS · Shopify Apps',
     title: 'Building ideas into scalable digital products',
     subhead:
-      'I design and build Shopify apps, multi-tenant SaaS platforms and learning management systems, from database schema to the last dashboard screen. Founders, agencies and merchants bring me a workflow; I hand back a product their team and customers can use every day.',
+      'Hi, I’m Komal, a full-stack engineer based in Pakistan. For over three years I’ve built Shopify apps and multi-tenant SaaS platforms for clients in the USA and Australia, from the React interface to the PostgreSQL database, billing and background jobs.',
   },
 
   cta: {

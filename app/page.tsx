@@ -7,7 +7,7 @@ import { featuredProjects, personalProjects } from '@/data/projects'
 import { getCoverScreenshot, getScreenshot } from '@/lib/screenshots'
 import { pageMetadata, personJsonLd } from '@/lib/seo'
 import { ButtonLink } from '@/components/ui/button-link'
-import { BrowserFrame, PhoneFrame } from '@/components/ui/device-frame'
+import { BrowserFrame } from '@/components/ui/device-frame'
 import { CtaBand } from '@/components/ui/cta-band'
 import { FeaturedProjectRows } from '@/components/projects/featured-rows'
 import { CompactProjectList } from '@/components/projects/compact-list'
@@ -27,18 +27,6 @@ export default function HomePage() {
     'Quran Foundation LMS',
     'Super Admin portal',
   )
-  const heroBack = getScreenshot(
-    'quranfoundation-lms',
-    'manager-portal/manager-enrollments.png',
-    'Quran Foundation LMS',
-    'Center Manager portal',
-  )
-  const heroPhone = getScreenshot(
-    'quranfoundation-lms',
-    'teacher-portal/teacher-home.png',
-    'Quran Foundation LMS',
-    'Teacher portal',
-  )
 
   const featuredWithCovers = featuredProjects.map((project) => ({
     project,
@@ -56,8 +44,44 @@ export default function HomePage() {
 
       {/* 1. Hero */}
       <section className="section-y border-b border-border">
-        <div className="container-site grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-6">
+        <div className="container-site grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+          {/* Mobile: photo first; Desktop: right column with overlapping dashboard card */}
+          <div className="hero-seq order-1 lg:order-2 lg:col-span-6" style={seq(4)}>
+            <div className="relative mx-auto max-w-sm lg:ml-auto lg:mr-0 lg:max-w-md lg:pb-10 lg:pl-14">
+              <div className="overflow-hidden rounded-[12px] border border-border bg-surface">
+                <Image
+                  src="/images/profile.jpg"
+                  alt="Komal Raza, Full-Stack Engineer"
+                  width={1088}
+                  height={1088}
+                  priority
+                  fetchPriority="high"
+                  sizes="(min-width: 1024px) 392px, (min-width: 640px) 384px, 88vw"
+                  className="aspect-[4/5] w-full object-cover object-top"
+                />
+              </div>
+
+              {heroMain && (
+                <div className="hidden lg:absolute lg:bottom-0 lg:left-0 lg:z-10 lg:block lg:w-[68%]">
+                  <BrowserFrame title="quran-foundation-lms · super-admin">
+                    <div className="aspect-[16/10] w-full overflow-hidden">
+                      <Image
+                        src={heroMain.src}
+                        alt={heroMain.alt}
+                        width={heroMain.width}
+                        height={heroMain.height}
+                        sizes="320px"
+                        className="h-full w-full object-cover object-top"
+                      />
+                    </div>
+                  </BrowserFrame>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Mobile: text second; Desktop: left column */}
+          <div className="order-2 lg:order-1 lg:col-span-6">
             <div className="hero-seq" style={seq(0)}>
               <span className="signature-chip">{site.hero.chip}</span>
             </div>
@@ -72,62 +96,23 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="hero-seq lg:col-span-6" style={seq(4)}>
-            <div className="relative pb-6 pt-6 sm:pl-6 sm:pt-8">
-              {heroBack && (
-                <div className="hidden opacity-85 sm:absolute sm:right-0 sm:top-0 sm:block sm:w-[86%]">
-                  <BrowserFrame title="quran-foundation-lms · center-manager">
-                    <div className="aspect-[16/10] w-full overflow-hidden">
-                      <Image
-                        src={heroBack.src}
-                        alt={heroBack.alt}
-                        width={heroBack.width}
-                        height={heroBack.height}
-                        sizes="(min-width: 1024px) 480px, 80vw"
-                        className="h-full w-full object-cover object-top"
-                      />
-                    </div>
-                  </BrowserFrame>
+          {/* Mobile: screenshot card third (below text) */}
+          {heroMain && (
+            <div className="hero-seq order-3 lg:hidden" style={seq(4)}>
+              <BrowserFrame title="quran-foundation-lms · super-admin">
+                <div className="aspect-[16/10] w-full overflow-hidden">
+                  <Image
+                    src={heroMain.src}
+                    alt={heroMain.alt}
+                    width={heroMain.width}
+                    height={heroMain.height}
+                    sizes="92vw"
+                    className="h-full w-full object-cover object-top"
+                  />
                 </div>
-              )}
-
-              {heroMain && (
-                <div className="relative z-10 sm:w-[90%]">
-                  <BrowserFrame title="quran-foundation-lms · super-admin">
-                    <div className="aspect-[16/10] w-full overflow-hidden">
-                      <Image
-                        src={heroMain.src}
-                        alt={heroMain.alt}
-                        width={heroMain.width}
-                        height={heroMain.height}
-                        priority
-                        fetchPriority="high"
-                        sizes="(min-width: 1024px) 520px, 92vw"
-                        className="h-full w-full object-cover object-top"
-                      />
-                    </div>
-                  </BrowserFrame>
-                </div>
-              )}
-
-              {heroPhone && (
-                <div className="relative z-20 -mt-14 ml-auto w-36 sm:absolute sm:bottom-0 sm:right-2 sm:mt-0 sm:w-40">
-                  <PhoneFrame title="teacher">
-                    <div className="aspect-[9/16] w-full overflow-hidden">
-                      <Image
-                        src={heroPhone.src}
-                        alt={heroPhone.alt}
-                        width={heroPhone.width}
-                        height={heroPhone.height}
-                        sizes="160px"
-                        className="h-full w-full object-cover object-top"
-                      />
-                    </div>
-                  </PhoneFrame>
-                </div>
-              )}
+              </BrowserFrame>
             </div>
-          </div>
+          )}
         </div>
       </section>
 
