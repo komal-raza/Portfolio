@@ -24,6 +24,7 @@ const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1
 export function Navbar() {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const [lastPath, setLastPath] = useState(pathname)
 
   // Close the mobile menu whenever the route changes.
@@ -32,8 +33,20 @@ export function Navbar() {
     setMobileOpen(false)
   }
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 4)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-bg">
+    <header
+      className={cn(
+        'fixed inset-x-0 top-0 z-50 border-b bg-bg transition-colors',
+        scrolled ? 'border-border' : 'border-transparent',
+      )}
+    >
       <div className="container-site flex h-[72px] items-center justify-between gap-6">
         <Link
           href="/"

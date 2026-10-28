@@ -96,17 +96,14 @@ export default function ServicesOverviewPage() {
             The same five-step rhythm across Shopify apps, SaaS platforms and backend engagements.
           </p>
 
-          <ol className="mt-10 divide-y divide-border border-y border-border">
+          <ol className="mt-10 grid divide-y divide-border rounded-[12px] border border-border bg-surface lg:grid-cols-5 lg:divide-x lg:divide-y-0">
             {site.process.map((step, index) => (
-              <li
-                key={step.title}
-                className="grid gap-3 py-6 md:grid-cols-[80px_220px_1fr] md:items-baseline md:gap-8"
-              >
+              <li key={step.title} className="flex flex-col p-6">
                 <span className="font-mono text-sm text-link">
                   {String(index + 1).padStart(2, '0')}
                 </span>
-                <h3 className="text-lg font-semibold text-text">{step.title}</h3>
-                <p className="text-muted">{step.text}</p>
+                <h3 className="mt-3 text-lg font-semibold text-text">{step.title}</h3>
+                <p className="fs-small mt-2 text-muted">{step.text}</p>
               </li>
             ))}
           </ol>
