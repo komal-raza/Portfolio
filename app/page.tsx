@@ -1,12 +1,270 @@
-import { Header } from "@/components/portfolio/header"
-import { Hero } from "@/components/portfolio/hero"
-import { Projects } from "@/components/portfolio/projects"
-import { Experience } from "@/components/portfolio/experience"
-import { Skills } from "@/components/portfolio/skills"
-import { About } from "@/components/portfolio/about"
-import { Contact } from "@/components/portfolio/contact"
-import { Footer } from "@/components/portfolio/footer"
+import type { CSSProperties } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { site } from '@/data/site'
+import { services } from '@/data/services'
+import { featuredProjects, personalProjects } from '@/data/projects'
+import { getScreenshot } from '@/lib/screenshots'
+import { pageMetadata, personJsonLd } from '@/lib/seo'
+import { ButtonLink } from '@/components/ui/button-link'
+import { BrowserFrame, PhoneFrame } from '@/components/ui/device-frame'
+import { CtaBand } from '@/components/ui/cta-band'
+import { FeaturedProjectRows } from '@/components/projects/featured-rows'
+import { CompactProjectList } from '@/components/projects/compact-list'
+
+export const metadata = pageMetadata({
+  description: site.description,
+  path: '/',
+})
+
+const seq = (step: number) => ({ '--seq': step } as CSSProperties)
 
 export default function HomePage() {
-  return <><Header /><main><Hero /><About/><Projects /><Experience /><Skills /><Contact /></main><Footer /></>
+  const heroMain = getScreenshot(
+    'quranfoundation-lms',
+    'admin-portal/admin-home.png',
+    'Quran Foundation LMS',
+    'Super Admin portal',
+  )
+  const heroBack = getScreenshot(
+    'quranfoundation-lms',
+    'manager-portal/manager-enrollments.png',
+    'Quran Foundation LMS',
+    'Center Manager portal',
+  )
+  const heroPhone = getScreenshot(
+    'quranfoundation-lms',
+    'teacher-portal/teacher-home.png',
+    'Quran Foundation LMS',
+    'Teacher portal',
+  )
+
+  const featuredWithCovers = featuredProjects.map((project) => ({
+    project,
+    cover: project.screens
+      ? getScreenshot(project.screens.folder, project.screens.cover, project.name)
+      : undefined,
+  }))
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd()) }}
+      />
+
+      {/* 1. Hero */}
+      <section className="section-y border-b border-border">
+        <div className="container-site grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-6">
+            <div className="hero-seq" style={seq(0)}>
+              <span className="signature-chip">{site.hero.chip}</span>
+            </div>
+            <h1 className="hero-seq mt-6" style={seq(1)}>
+              {site.hero.title}
+            </h1>
+            <p className="lead hero-seq mt-6" style={seq(2)}>
+              {site.hero.subhead}
+            </p>
+            <div className="hero-seq mt-8" style={seq(3)}>
+              <ButtonLink href={site.cta.href}>{site.cta.label}</ButtonLink>
+            </div>
+          </div>
+
+          <div className="hero-seq lg:col-span-6" style={seq(4)}>
+            <div className="relative pb-6 pt-6 sm:pl-6 sm:pt-8">
+              {heroBack && (
+                <div className="hidden opacity-85 sm:absolute sm:right-0 sm:top-0 sm:block sm:w-[86%]">
+                  <BrowserFrame title="quran-foundation-lms · center-manager">
+                    <div className="aspect-[16/10] w-full overflow-hidden">
+                      <Image
+                        src={heroBack.src}
+                        alt={heroBack.alt}
+                        width={heroBack.width}
+                        height={heroBack.height}
+                        sizes="(min-width: 1024px) 480px, 80vw"
+                        className="h-full w-full object-cover object-top"
+                      />
+                    </div>
+                  </BrowserFrame>
+                </div>
+              )}
+
+              {heroMain && (
+                <div className="relative z-10 sm:w-[90%]">
+                  <BrowserFrame title="quran-foundation-lms · super-admin">
+                    <div className="aspect-[16/10] w-full overflow-hidden">
+                      <Image
+                        src={heroMain.src}
+                        alt={heroMain.alt}
+                        width={heroMain.width}
+                        height={heroMain.height}
+                        priority
+                        fetchPriority="high"
+                        sizes="(min-width: 1024px) 520px, 92vw"
+                        className="h-full w-full object-cover object-top"
+                      />
+                    </div>
+                  </BrowserFrame>
+                </div>
+              )}
+
+              {heroPhone && (
+                <div className="relative z-20 -mt-14 ml-auto w-36 sm:absolute sm:bottom-0 sm:right-2 sm:mt-0 sm:w-40">
+                  <PhoneFrame title="teacher">
+                    <div className="aspect-[9/16] w-full overflow-hidden">
+                      <Image
+                        src={heroPhone.src}
+                        alt={heroPhone.alt}
+                        width={heroPhone.width}
+                        height={heroPhone.height}
+                        sizes="160px"
+                        className="h-full w-full object-cover object-top"
+                      />
+                    </div>
+                  </PhoneFrame>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Services (editorial rows, not four equal boxes) */}
+      <section className="section-y border-b border-border" aria-labelledby="services-heading">
+        <div className="container-site">
+          <div className="flex flex-col justify-between gap-4 pb-10 md:flex-row md:items-end">
+            <div>
+              <h2 id="services-heading">Services</h2>
+              <p className="lead mt-3">
+                What I build for founders, merchants, agencies and education organisations.
+              </p>
+            </div>
+            <Link href="/services" className="font-heading text-sm font-semibold text-link underline">
+              Compare all services
+            </Link>
+          </div>
+
+          <div className="divide-y divide-border border-y border-border">
+            {services.map((service) => (
+              <article
+                key={service.slug}
+                className="grid gap-6 py-8 md:grid-cols-12 md:items-start md:gap-8 md:py-10"
+              >
+                <div className="md:col-span-5">
+                  <h3 className="text-xl font-semibold text-text md:text-2xl">{service.title}</h3>
+                  <p className="mt-2 text-muted">{service.summary}</p>
+                </div>
+
+                <ul className="space-y-1.5 md:col-span-5" aria-label={`${service.title} deliverables`}>
+                  {service.highlights.map((item) => (
+                    <li key={item} className="fs-small flex items-baseline gap-2.5 text-text">
+                      <span className="size-1.5 shrink-0 rounded-full bg-link" aria-hidden="true" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="md:col-span-2 md:text-right">
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="font-heading text-sm font-semibold text-link underline"
+                  >
+                    Service details
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Featured work (large alternating rows) */}
+      <section className="section-y border-b border-border" aria-labelledby="featured-work-heading">
+        <div className="container-site">
+          <div className="flex flex-col justify-between gap-4 pb-10 md:flex-row md:items-end">
+            <div>
+              <h2 id="featured-work-heading">Featured work</h2>
+              <p className="lead mt-3">
+                Production Shopify apps, multi-tenant SaaS platforms and an LMS used across education centres.
+              </p>
+            </div>
+            <Link href="/projects" className="font-heading text-sm font-semibold text-link underline">
+              All projects
+            </Link>
+          </div>
+
+          <FeaturedProjectRows items={featuredWithCovers} />
+        </div>
+      </section>
+
+      {/* 4. How I work (the only sequential numbered section) */}
+      <section className="section-y border-b border-border" aria-labelledby="process-heading">
+        <div className="container-site">
+          <h2 id="process-heading">How I work</h2>
+          <p className="lead mt-3">
+            Five steps from the first call to post-launch support.
+          </p>
+
+          <ol className="mt-10 divide-y divide-border border-y border-border">
+            {site.process.map((step, index) => (
+              <li
+                key={step.title}
+                className="grid gap-3 py-6 md:grid-cols-[80px_220px_1fr] md:items-baseline md:gap-8"
+              >
+                <span className="font-mono text-sm text-link">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <h3 className="text-lg font-semibold text-text">{step.title}</h3>
+                <p className="text-muted">{step.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* 5. Tech stack grouped */}
+      <section className="section-y border-b border-border" aria-labelledby="stack-heading">
+        <div className="container-site">
+          <h2 id="stack-heading">Tech stack</h2>
+          <p className="lead mt-3">
+            Tools and APIs I use in production across client and product work.
+          </p>
+
+          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {site.stack.map((group) => (
+              <div key={group.group} className="rounded-[12px] border border-border bg-surface p-6">
+                <h3 className="text-lg font-semibold text-text">{group.group}</h3>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <li
+                      key={item}
+                      className="rounded-[8px] border border-border bg-bg px-2.5 py-1 font-mono text-xs text-text"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Personal projects strip */}
+      <section className="section-y" aria-labelledby="personal-projects-heading">
+        <div className="container-site">
+          <h2 id="personal-projects-heading">Personal projects</h2>
+          <p className="lead mt-3 mb-8">
+            Side projects and tools built with Next.js and TypeScript.
+          </p>
+
+          <CompactProjectList projects={personalProjects} />
+        </div>
+      </section>
+
+      {/* 7. CTA band */}
+      <CtaBand />
+    </>
+  )
 }
