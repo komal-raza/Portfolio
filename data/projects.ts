@@ -304,7 +304,10 @@ export const projects: Project[] = [
       },
     ],
     stack: ['Next.js', 'TypeScript', 'Prisma', 'Neon Postgres', 'Vercel'],
-    links: [{ label: 'Source on GitHub', href: 'https://github.com/komal-raza/nextjs-agent-skills-manager' }],
+    links: [
+      { label: 'Live site', href: 'https://nextjs-agent-skills-manager.vercel.app' },
+      { label: 'Source on GitHub', href: 'https://github.com/komal-raza/nextjs-agent-skills-manager' },
+    ],
     screens: {
       folder: 'agent-skills-manager',
       cover: 'dashboard.png',
@@ -330,6 +333,13 @@ export const projects: Project[] = [
       },
     ],
     stack: ['Next.js', 'TypeScript', 'Stripe'],
+    links: [
+      { label: 'Live site', href: 'https://eluara.insforge.site' },
+      {
+        label: 'Source on GitHub',
+        href: 'https://github.com/komal-raza/nextjs-ecommerce-website/tree/main',
+      },
+    ],
     screens: {
       folder: 'Eluara-ecommerce-app',
       cover: 'HeroSection.png',
