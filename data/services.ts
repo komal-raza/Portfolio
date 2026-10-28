@@ -25,8 +25,8 @@ export const services: Service[] = [
     metaDescription:
       'Public and custom Shopify app development: Admin API (REST and GraphQL), webhooks, Polaris UI, Shopify Billing and theme app blocks.',
     whoFor: [
-      'Founders who want to launch a public app on the Shopify App Store.',
-      'Merchants and agencies who need a private custom app for something the theme or existing apps cannot do.',
+      'Product teams who want to launch a public app on the Shopify App Store.',
+      'Merchants who need a private custom app for something the theme or existing apps cannot do.',
       'Teams with an existing app that needs billing, a rebuilt admin UI or more reliable webhooks.',
     ],
     deliverables: [
@@ -88,8 +88,8 @@ export const services: Service[] = [
     metaDescription:
       'Multi-tenant SaaS development: tenant isolation, role-based access, Stripe subscriptions and Stripe Connect, background jobs with BullMQ and Redis.',
     whoFor: [
-      'Founders turning a service or internal tool into a product other businesses subscribe to.',
-      'Companies with one deployment per customer who want a single multi-tenant platform.',
+      'Product teams turning a service or internal tool into a platform other businesses subscribe to.',
+      'Organisations with one deployment per customer who want a single multi-tenant platform.',
       'Teams that need roles, permissions and billing added to an existing product.',
     ],
     deliverables: [
@@ -143,7 +143,7 @@ export const services: Service[] = [
     whoFor: [
       'Schools, academies and education organisations running several centres or branches.',
       'Institutions moving attendance, homework and fee records off paper and spreadsheets.',
-      'EdTech founders who need an LMS shaped around a specific teaching method.',
+      'Education teams who need an LMS shaped around a specific teaching method.',
     ],
     deliverables: [
       {
@@ -196,7 +196,7 @@ export const services: Service[] = [
     whoFor: [
       'Teams with a working product that needs payments, a marketing integration or automation added.',
       'Products where slow tasks (emails, imports, reports) are blocking requests or failing silently.',
-      'Agencies who need a Node.js and PostgreSQL backend behind a frontend they already built.',
+      'Product teams who need a Node.js and PostgreSQL backend behind a frontend they already built.',
     ],
     deliverables: [
       {

@@ -123,7 +123,7 @@ export default function HomePage() {
             <div>
               <h2 id="services-heading">Services</h2>
               <p className="lead mt-3">
-                What I build for founders, merchants, agencies and education organisations.
+                What I build for merchants, education organisations and product teams.
               </p>
             </div>
             <Link href="/services" className="font-heading text-sm font-semibold text-link underline">

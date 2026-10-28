@@ -2,7 +2,13 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { caseStudies, formatClientLine, getNextCaseStudy, getProject } from '@/data/projects'
+import {
+  caseStudies,
+  formatClientLine,
+  formatProjectPeriod,
+  getNextCaseStudy,
+  getProject,
+} from '@/data/projects'
 import { getCoverScreenshot, getScreenshots } from '@/lib/screenshots'
 import { pageMetadata } from '@/lib/seo'
 import { BrowserFrame } from '@/components/ui/device-frame'
@@ -91,7 +97,7 @@ export default async function CaseStudyPage({
               <dt className="font-mono text-xs text-muted">Type</dt>
               <dd className="mt-1 font-heading text-sm font-semibold text-text">
                 {project.type}
-                {project.year ? ` (${project.year})` : ''}
+                {formatProjectPeriod(project) ? ` (${formatProjectPeriod(project)})` : ''}
               </dd>
             </div>
             <div>

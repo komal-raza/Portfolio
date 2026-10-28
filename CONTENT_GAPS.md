@@ -49,5 +49,11 @@ Per Section 3 and Section 9 of `prompt/REDESIGN_PROMPT.md`, no facts, metrics, t
 - **Current state:** `LinkedIn` (`https://www.linkedin.com/in/komal-raza`), `GitHub` (`https://github.com/komal-raza`) and `Email` (`razaa.komal@gmail.com`) are prefilled and rendered in the "Find me online" grid on `/contact`. `Instagram`, `X`, `TikTok`, `YouTube` and `Facebook` have empty `url` strings and are hidden.
 - **TODO:** Fill in `handle` and `url` for any of `Instagram`, `X`, `TikTok`, `YouTube` or `Facebook` in `data/site.ts` (`site.socials`) to render those cards on `/contact`.
 
+## 10. Confirm Library Management SaaS end date (`data/projects.ts`)
+
+- **Current state:** `library-management-saas` has `startDate: '2024'` and leaves `endDate` and `ongoing` unset so it does not claim `"2024 to present"` without confirmation.
+- **TODO:** Confirm the Library SaaS end date: set `endDate` (e.g. `'2025'`) or set `ongoing: true` on `library-management-saas` in `data/projects.ts`.
+
+
 
 

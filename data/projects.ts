@@ -20,7 +20,9 @@ export type Project = {
   featured: boolean
   /** Whether /projects/[slug] exists. Projects without screenshots link out instead. */
   caseStudy: boolean
-  year?: string
+  startDate?: string
+  endDate?: string
+  ongoing?: boolean
   type: string
   role: string
   status?: string
@@ -46,7 +48,7 @@ export const projects: Project[] = [
     category: 'LMS',
     featured: true,
     caseStudy: true,
-    year: '2026',
+    startDate: '2026',
     type: 'Multi-tenant LMS, client project',
     role: 'Full-stack developer, team of two',
     status: 'Deployed on Vercel and Render',
@@ -124,7 +126,8 @@ export const projects: Project[] = [
     category: 'Shopify',
     featured: true,
     caseStudy: true,
-    year: '2023',
+    startDate: '2023',
+    endDate: '2023',
     type: 'Public Shopify app',
     role: 'Full-stack Shopify app developer, team of four',
     status: 'Live on the Shopify App Store',
@@ -178,7 +181,8 @@ export const projects: Project[] = [
     category: 'Shopify',
     featured: true,
     caseStudy: true,
-    year: '2024 to 2025',
+    startDate: '2024',
+    endDate: '2025',
     type: 'Private custom Shopify app',
     role: 'Shopify full-stack app developer, team of three',
     status: 'Private app for one merchant',
@@ -233,7 +237,7 @@ export const projects: Project[] = [
     category: 'SaaS',
     featured: true,
     caseStudy: true,
-    year: '2024 to present',
+    startDate: '2024',
     type: 'Multi-tenant SaaS platform',
     role: 'Full-stack engineer',
     deliveredThrough: 'LeoaTech',
@@ -375,6 +379,15 @@ export function getNextCaseStudy(slug: string) {
 
 export function projectHref(project: Project) {
   return project.caseStudy ? `/projects/${project.slug}` : project.links?.[0]?.href ?? '/projects'
+}
+
+export function formatProjectPeriod(project: Project): string | undefined {
+  if (!project.startDate) return undefined
+  if (project.ongoing) return `${project.startDate} to present`
+  if (project.endDate && project.endDate !== project.startDate) {
+    return `${project.startDate} to ${project.endDate}`
+  }
+  return project.startDate
 }
 
 export function formatClientLine(project: Project): string | undefined {

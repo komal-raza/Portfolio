@@ -15,24 +15,27 @@ export type TimelineEntry = {
   summary?: string
 }
 
+const experienceSince = 'since 2023'
+
 export const site = {
   name: 'Komal Raza',
   role: 'Full-Stack Engineer',
   shortRole: 'Full-Stack Engineer · SaaS · Shopify Apps',
   location: 'Remote, Pakistan',
+  experienceSince,
   email: 'razaa.komal@gmail.com',
   github: 'https://github.com/komal-raza',
   linkedin: 'https://www.linkedin.com/in/komal-raza',
   repo: 'https://github.com/komal-raza/Portfolio',
   description:
-    'I build Shopify apps, multi-tenant SaaS platforms and LMS products with React, Node.js and PostgreSQL. Freelance and contract projects, working remotely from Pakistan.',
+    `I have built Shopify apps, multi-tenant SaaS platforms and LMS products with React, Node.js and PostgreSQL ${experienceSince}. Freelance and contract projects, working remotely from Pakistan.`,
   tagline: 'Shopify apps, multi-tenant SaaS and LMS platforms, built end to end.',
 
   hero: {
     chip: 'Full-Stack Engineer · SaaS · Shopify Apps',
     title: 'Building ideas into scalable digital products',
     subhead:
-      'Hi, I’m Komal, a full-stack engineer based in Pakistan. For over three years I’ve built Shopify apps and multi-tenant SaaS platforms for clients in the USA and Australia, from the React interface to the PostgreSQL database, billing and background jobs.',
+      `Hi, I’m Komal, a full-stack engineer based in Pakistan. Working ${experienceSince}, I’ve built Shopify apps, multi-tenant SaaS platforms and LMS products for merchants, education organisations and product teams in the USA and Australia, from the React interface to the PostgreSQL database, billing and background jobs.`,
   },
 
   cta: {

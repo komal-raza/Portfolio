@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { formatClientLine, type Project } from '@/data/projects'
+import { formatClientLine, formatProjectPeriod, type Project } from '@/data/projects'
 import type { Screenshot } from '@/lib/screenshots'
 import { BrowserFrame } from '@/components/ui/device-frame'
 import { cn } from '@/lib/utils'
@@ -47,7 +47,7 @@ export function FeaturedProjectRows({ items }: { items: ProjectWithCover[] }) {
             <div className={cn('lg:col-span-5', reversed && 'lg:order-1')}>
               <p className="fs-small font-medium text-muted">
                 {project.type}
-                {project.year ? ` · ${project.year}` : ''}
+                {formatProjectPeriod(project) ? ` · ${formatProjectPeriod(project)}` : ''}
               </p>
               {formatClientLine(project) && (
                 <p className="fs-small mt-1 text-muted">{formatClientLine(project)}</p>
