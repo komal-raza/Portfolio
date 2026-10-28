@@ -5,7 +5,7 @@ import { FolderGit2, Send } from 'lucide-react'
 import { site } from '@/data/site'
 import { services } from '@/data/services'
 import { featuredProjects, getUniqueClientRegions, personalProjects } from '@/data/projects'
-import { getCoverScreenshot, getScreenshot } from '@/lib/screenshots'
+import { getCoverScreenshot } from '@/lib/screenshots'
 import { pageMetadata, personJsonLd } from '@/lib/seo'
 import { ButtonLink } from '@/components/ui/button-link'
 import { BrowserFrame } from '@/components/ui/device-frame'
@@ -24,13 +24,6 @@ export const metadata = pageMetadata({
 const seq = (step: number) => ({ '--seq': step } as CSSProperties)
 
 export default function HomePage() {
-  const heroMain = getScreenshot(
-    'quranfoundation-lms',
-    'admin-portal/admin-home.png',
-    'Quran Foundation LMS',
-    'Super Admin portal',
-  )
-
   const featuredWithCovers = featuredProjects.map((project) => ({
     project,
     cover: project.screens
@@ -48,18 +41,18 @@ export default function HomePage() {
       {/* 1. Hero */}
       <section className="section-y border-b border-border">
         <div className="container-site grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
-          {/* Mobile: photo first; Desktop: right column with framed circular portrait + overlapping card */}
+          {/* Mobile: photo + overlapping code card first; Desktop: right column */}
           <div className="hero-seq order-1 lg:order-2 lg:col-span-6" style={seq(4)}>
-            <div className="relative mx-auto max-w-sm lg:ml-auto lg:mr-0 lg:max-w-[420px] lg:pb-6 lg:pl-8">
+            <div className="relative mx-auto max-w-sm pb-6 pl-4 sm:pl-6 lg:ml-auto lg:mr-0 lg:max-w-[420px] lg:pb-6 lg:pl-8">
               <div className="relative flex aspect-square w-full items-center justify-center rounded-[12px] border border-border bg-surface p-6 sm:p-8">
                 {/* Availability badge in top-right */}
-                <div className="absolute right-4 top-4 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-bg px-3.5 py-1.5 font-heading text-xs font-semibold text-text shadow-md">
+                <div className="absolute right-5 top-4 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-bg px-3.5 py-1.5 font-heading text-xs font-semibold text-text shadow-md">
                   <span className="size-2 rounded-full bg-accent" aria-hidden="true" />
                   <span>Available for Projects</span>
                 </div>
 
                 {/* Circular portrait */}
-                <div className="relative aspect-square w-[82%] overflow-hidden rounded-full border-4 border-link bg-bg p-1">
+                <div className="relative aspect-square w-[92%] overflow-hidden rounded-full border-4 border-link bg-bg p-1">
                   <div className="h-full w-full overflow-hidden rounded-full border-2 border-text/80">
                     <Image
                       src="/images/profile.jpg"
@@ -75,22 +68,25 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {heroMain && (
-                <div className="hidden lg:absolute lg:-bottom-2 lg:-left-2 lg:z-20 lg:block lg:w-[46%]">
-                  <BrowserFrame title="quran-lms">
-                    <div className="aspect-[16/10] w-full overflow-hidden">
-                      <Image
-                        src={heroMain.src}
-                        alt={heroMain.alt}
-                        width={heroMain.width}
-                        height={heroMain.height}
-                        sizes="200px"
-                        className="h-full w-full object-cover object-top"
-                      />
-                    </div>
-                  </BrowserFrame>
-                </div>
-              )}
+              {/* Overlapping code snippet card at bottom-left */}
+              <div className="absolute bottom-0 left-0 z-20 w-[62%] max-w-[258px] shadow-[0_12px_32px_-8px_#000000]">
+                <BrowserFrame title="komal.ts">
+                  <pre className="overflow-x-auto px-4 py-3.5 font-mono text-xs leading-relaxed text-text">
+                    <code>
+                      <span className="text-link">class</span>{' '}
+                      <span className="text-text">Developer</span> {'{\n'}
+                      {'  '}
+                      <span className="text-muted">name</span> ={' '}
+                      <span className="text-accent">&apos;{site.name}&apos;</span>;{'\n'}
+                      {'  '}
+                      <span className="text-muted">stack</span> = [
+                      <span className="text-accent">&apos;React&apos;</span>,{' '}
+                      <span className="text-accent">&apos;Node.js&apos;</span>]{'\n'}
+                      {'}'}
+                    </code>
+                  </pre>
+                </BrowserFrame>
+              </div>
             </div>
           </div>
 
@@ -100,13 +96,13 @@ export default function HomePage() {
               <span className="signature-chip">{site.hero.chip}</span>
             </div>
             <h1
-              className="hero-seq mt-6 text-[clamp(2rem,4.2vw,3.25rem)] leading-[1.08] font-bold tracking-tight"
+              className="hero-seq mt-6 text-[clamp(2rem,4.2vw,3.25rem)] text-3xl leading-[1.08] font-bold tracking-tight"
               style={seq(1)}
             >
               {site.hero.title}
             </h1>
             <p
-              className="hero-seq mt-6 max-w-[52ch] text-[1.25rem] leading-[1.6] text-text"
+              className="hero-seq mt-6 max-w-[52ch] text-[1.15rem] leading-[1.6] text-text"
               style={seq(2)}
             >
               <span className="font-semibold">{site.hero.leadIn}</span>
@@ -130,24 +126,6 @@ export default function HomePage() {
               </ButtonLink>
             </div>
           </div>
-
-          {/* Mobile: screenshot card third (below text) */}
-          {heroMain && (
-            <div className="hero-seq order-3 lg:hidden" style={seq(4)}>
-              <BrowserFrame title="quran-lms">
-                <div className="aspect-[16/10] w-full overflow-hidden">
-                  <Image
-                    src={heroMain.src}
-                    alt={heroMain.alt}
-                    width={heroMain.width}
-                    height={heroMain.height}
-                    sizes="92vw"
-                    className="h-full w-full object-cover object-top"
-                  />
-                </div>
-              </BrowserFrame>
-            </div>
-          )}
         </div>
       </section>
 
