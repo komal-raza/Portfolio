@@ -1,33 +1,47 @@
-# Portfolio
+# Komal Raza — Portfolio & Agency Website
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+Personal portfolio and freelance agency site for **Komal Raza**, Senior Full-Stack Engineer (React, Node.js, PostgreSQL) building Shopify apps, multi-tenant SaaS platforms and LMS/EdTech products.
 
-## Built with v0
+## Stack
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+- **Framework:** Next.js 16 (App Router, TypeScript)
+- **Styling:** Tailwind CSS v4 with strict CSS custom-property design tokens (`app/globals.css`)
+- **Fonts:** `next/font/google` — Sora (headings, buttons), Inter (body/UI), JetBrains Mono (code/metadata)
+- **Validation:** `zod`
+- **Icons:** `lucide-react` (1.5px stroke)
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_hil68etl0BYKFlnozIMs2GWuHBju)
-
-## Getting Started
-
-First, run the development server:
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-## Learn More
+Create a `.env.local` file in the project root (all variables are optional in development):
 
-To learn more, take a look at the following resources:
+| Variable | Required | Description |
+|---|---|---|
+| `NEXT_PUBLIC_SITE_URL` | Optional | Canonical origin used for metadata, `sitemap.xml`, `robots.txt` and JSON-LD (e.g. `https://komalraza.dev`). Falls back to `https://$VERCEL_PROJECT_PRODUCTION_URL`, then `http://localhost:3000`. |
+| `RESEND_API_KEY` | Optional | Resend API key for sending `/contact` submissions via email. When omitted, submissions are logged in development and the user is given a pre-filled `mailto:` fallback button. |
+| `CONTACT_TO_EMAIL` | Optional | Recipient email for `/contact` messages. Defaults to `razaa.komal@gmail.com`. |
+| `CONTACT_FROM_EMAIL` | Optional | Verified sender address for Resend (e.g. `Portfolio <contact@yourdomain.com>`). Defaults to `Portfolio Contact <onboarding@resend.dev>`. |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
+## Content & screenshots
+
+- Site copy, process, timeline and tech stack live in `data/site.ts`.
+- Service pages live in `data/services.ts`.
+- Project case studies live in `data/projects.ts`.
+- Project screenshots live in `public/ProjectImages/<folder>/` and are read automatically at build time (`lib/screenshots.ts`) with natural sorting and intrinsic dimensions read from image headers. Dropping a new screenshot into any project folder adds it to that project's gallery on the next `npm run build`.
+- Unresolved content questions are tracked in `CONTENT_GAPS.md`.
+- Architectural and design decisions are documented in `docs/redesign-plan.md`.
+
+## Scripts
+
+- `npm run dev` — Start development server
+- `npm run build` — Production build (`next build`)
+- `npm run start` — Start production server
+- `npm run lint` — Run ESLint
