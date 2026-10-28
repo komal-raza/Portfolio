@@ -21,10 +21,10 @@ const MAIN_FILE = /^main\.(png|jpe?g|webp|gif|avif)$/i
 
 const collator = new Intl.Collator('en', { numeric: true, sensitivity: 'base' })
 export const naturalSort = (a: string, b: string) => {
-  const aIsMain = MAIN_FILE.test(path.basename(a))
-  const bIsMain = MAIN_FILE.test(path.basename(b))
-  if (aIsMain && !bIsMain) return -1
-  if (!aIsMain && bIsMain) return 1
+  const aMain = MAIN_FILE.test(path.basename(a))
+  const bMain = MAIN_FILE.test(path.basename(b))
+  if (aMain && !bMain) return -1
+  if (!aMain && bMain) return 1
   return collator.compare(a, b)
 }
 
@@ -41,8 +41,9 @@ const WORD_FIXES: Record<string, string> = {
 
 /** "7-EditMediaAssetsAssociatedWithProductVariant.png" -> "Edit media assets associated with product variant" */
 export function labelFromFilename(file: string) {
-  let name = path.basename(file).replace(IMAGE_EXT, '')
-  if (name.toLowerCase() === 'main') return 'Main overview'
+  const base = path.basename(file)
+  if (MAIN_FILE.test(base)) return 'Main overview'
+  let name = base.replace(IMAGE_EXT, '')
   name = name.replace(/^\d+[-_.\s]+/, '') // leading sort number
   name = name.replace(/^localhost[_-]\d+[_-]?/i, '') // dev-server captures
   name = name.replace(/^[a-z0-9-]+(\.[a-z0-9-]+)+[_-]/i, '') // "sub.domain.site_cart" -> "cart"
@@ -133,7 +134,7 @@ function toScreenshot(relativeFile: string, projectName: string, group?: string)
 }
 
 /**
- * Every image in `public/ProjectImages/<folder>`, natural-sorted (with `main.*` first).
+ * Every image in `public/ProjectImages/<folder>`, natural-sorted.
  * One level of sub-folders is supported (each becomes a group, in `groupOrder` or natural order).
  * Adding a file to the folder adds it to the gallery on the next build.
  */
@@ -185,15 +186,16 @@ export function getScreenshot(folder: string, file: string, projectName: string,
 }
 
 /**
- * Resolves the cover screenshot for a project folder.
- * Prefers any file named `main.*` (e.g. `main.png`, `main.jpeg`) in the folder root,
- * falling back to the configured `fallbackFile`.
+ * Resolves the cover screenshot for a project.
+ * Prefers any file starting with `main.` in the folder root (e.g. `main.png`, `main.jpeg`)
+ * and falls back to the configured `fallbackFile`.
  */
 export function getCoverScreenshot(folder: string, fallbackFile: string, projectName: string) {
   const dir = path.join(PUBLIC_DIR, SCREENSHOT_ROOT, folder)
   if (fs.existsSync(dir)) {
-    const entries = fs.readdirSync(dir, { withFileTypes: true })
-    const mainEntry = entries.find((entry) => entry.isFile() && MAIN_FILE.test(entry.name))
+    const mainEntry = fs
+      .readdirSync(dir, { withFileTypes: true })
+      .find((entry) => entry.isFile() && MAIN_FILE.test(entry.name))
     if (mainEntry) {
       return toScreenshot(path.join(folder, mainEntry.name), projectName)
     }
