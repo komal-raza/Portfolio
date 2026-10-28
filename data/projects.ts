@@ -350,7 +350,7 @@ export const projects: Project[] = [
     caseStudy: false,
     type: 'Personal project',
     role: 'Solo',
-    summary: 'This site. Case study galleries are generated at build time from the screenshot folders in the repo.',
+    summary: 'The site you are on: a Next.js and Tailwind portfolio with case studies for each project.',
     features: [],
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     links: [{ label: 'Source on GitHub', href: 'https://github.com/komal-raza/Portfolio' }],

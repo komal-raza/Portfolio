@@ -90,10 +90,10 @@ export function ProjectFilter({
 
       {filteredSecondary.length > 0 && (
         <section
-          aria-label="Other repositories"
+          aria-label="Personal projects"
           className={cn((filteredFeatured.length > 0 || filteredMini.length > 0) && 'mt-16')}
         >
-          <h2 className="mb-6 text-xl font-bold text-text">Open-source repository</h2>
+          <h2 className="mb-6 text-xl font-bold text-text">Personal projects</h2>
           <CompactProjectList projects={filteredSecondary} />
         </section>
       )}

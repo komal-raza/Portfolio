@@ -254,7 +254,7 @@ export default async function CaseStudyPage({
                 </p>
               </div>
               <span className="font-mono text-xs text-muted">
-                {galleryScreens.length} screens in repository
+                {galleryScreens.length} screens
               </span>
             </div>
 
