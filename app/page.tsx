@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { FolderGit2, Send } from 'lucide-react'
 import { site } from '@/data/site'
 import { services } from '@/data/services'
 import { featuredProjects, getUniqueClientRegions, personalProjects } from '@/data/projects'
@@ -11,7 +12,9 @@ import { BrowserFrame } from '@/components/ui/device-frame'
 import { CtaBand } from '@/components/ui/cta-band'
 import { FeaturedProjectRows } from '@/components/projects/featured-rows'
 import { CompactProjectList } from '@/components/projects/compact-list'
+import { ProcessTimeline } from '@/components/sections/process-timeline'
 import { TechStackGrid } from '@/components/sections/tech-stack'
+import { TestimonialsSection } from '@/components/sections/testimonials'
 
 export const metadata = pageMetadata({
   description: site.description,
@@ -45,32 +48,43 @@ export default function HomePage() {
       {/* 1. Hero */}
       <section className="section-y border-b border-border">
         <div className="container-site grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
-          {/* Mobile: photo first; Desktop: right column with overlapping dashboard card */}
+          {/* Mobile: photo first; Desktop: right column with framed circular portrait + overlapping card */}
           <div className="hero-seq order-1 lg:order-2 lg:col-span-6" style={seq(4)}>
-            <div className="relative mx-auto max-w-sm lg:ml-auto lg:mr-0 lg:max-w-md lg:pb-10 lg:pl-14">
-              <div className="overflow-hidden rounded-[12px] border border-border bg-surface">
-                <Image
-                  src="/images/profile.jpg"
-                  alt="Komal Raza, Full-Stack Engineer"
-                  width={1088}
-                  height={1088}
-                  priority
-                  fetchPriority="high"
-                  sizes="(min-width: 1024px) 392px, (min-width: 640px) 384px, 88vw"
-                  className="aspect-[4/5] w-full object-cover object-top"
-                />
+            <div className="relative mx-auto max-w-sm lg:ml-auto lg:mr-0 lg:max-w-[420px] lg:pb-6 lg:pl-8">
+              <div className="relative flex aspect-square w-full items-center justify-center rounded-[12px] border border-border bg-surface p-6 sm:p-8">
+                {/* Availability badge in top-right */}
+                <div className="absolute right-4 top-4 z-10 inline-flex items-center gap-2 rounded-full border border-border bg-bg px-3.5 py-1.5 font-heading text-xs font-semibold text-text shadow-md">
+                  <span className="size-2 rounded-full bg-accent" aria-hidden="true" />
+                  <span>Available for Projects</span>
+                </div>
+
+                {/* Circular portrait */}
+                <div className="relative aspect-square w-[82%] overflow-hidden rounded-full border-4 border-link bg-bg p-1">
+                  <div className="h-full w-full overflow-hidden rounded-full border-2 border-text/80">
+                    <Image
+                      src="/images/profile.jpg"
+                      alt="Komal Raza, Full-Stack Engineer"
+                      width={1088}
+                      height={1088}
+                      priority
+                      fetchPriority="high"
+                      sizes="(min-width: 1024px) 320px, (min-width: 640px) 300px, 75vw"
+                      className="h-full w-full object-cover object-top"
+                    />
+                  </div>
+                </div>
               </div>
 
               {heroMain && (
-                <div className="hidden lg:absolute lg:bottom-0 lg:left-0 lg:z-10 lg:block lg:w-[68%]">
-                  <BrowserFrame title="quran-foundation-lms · super-admin">
+                <div className="hidden lg:absolute lg:-bottom-2 lg:-left-2 lg:z-20 lg:block lg:w-[46%]">
+                  <BrowserFrame title="quran-lms">
                     <div className="aspect-[16/10] w-full overflow-hidden">
                       <Image
                         src={heroMain.src}
                         alt={heroMain.alt}
                         width={heroMain.width}
                         height={heroMain.height}
-                        sizes="320px"
+                        sizes="200px"
                         className="h-full w-full object-cover object-top"
                       />
                     </div>
@@ -85,21 +99,42 @@ export default function HomePage() {
             <div className="hero-seq" style={seq(0)}>
               <span className="signature-chip">{site.hero.chip}</span>
             </div>
-            <h1 className="hero-seq mt-6" style={seq(1)}>
+            <h1
+              className="hero-seq mt-6 text-[clamp(2rem,4.2vw,3.25rem)] leading-[1.08] font-bold tracking-tight"
+              style={seq(1)}
+            >
               {site.hero.title}
             </h1>
-            <p className="lead hero-seq mt-6" style={seq(2)}>
+            <p
+              className="hero-seq mt-6 max-w-[52ch] text-[1.25rem] leading-[1.6] text-text"
+              style={seq(2)}
+            >
+              <span className="font-semibold">{site.hero.leadIn}</span>
               {site.hero.subhead}
             </p>
-            <div className="hero-seq mt-8" style={seq(3)}>
-              <ButtonLink href={site.cta.href}>{site.cta.label}</ButtonLink>
+            <div
+              className="hero-seq mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
+              style={seq(3)}
+            >
+              <ButtonLink href={site.cta.href} className="w-full sm:w-auto">
+                <Send aria-hidden="true" strokeWidth={1.75} className="size-4 shrink-0" />
+                <span>{site.cta.label}</span>
+              </ButtonLink>
+              <ButtonLink
+                href={site.cta.secondaryHref}
+                variant="secondary"
+                className="w-full sm:w-auto"
+              >
+                <FolderGit2 aria-hidden="true" strokeWidth={1.75} className="size-4 shrink-0" />
+                <span>{site.cta.secondaryLabel}</span>
+              </ButtonLink>
             </div>
           </div>
 
           {/* Mobile: screenshot card third (below text) */}
           {heroMain && (
             <div className="hero-seq order-3 lg:hidden" style={seq(4)}>
-              <BrowserFrame title="quran-foundation-lms · super-admin">
+              <BrowserFrame title="quran-lms">
                 <div className="aspect-[16/10] w-full overflow-hidden">
                   <Image
                     src={heroMain.src}
@@ -189,7 +224,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. How I work (the only sequential numbered section) */}
+      {/* 4. How I work (borderless horizontal timeline on desktop, vertical on mobile) */}
       <section className="section-y border-b border-border" aria-labelledby="process-heading">
         <div className="container-site">
           <h2 id="process-heading">How I work</h2>
@@ -197,17 +232,7 @@ export default function HomePage() {
             Five steps from the first call to post-launch support.
           </p>
 
-          <ol className="mt-10 grid divide-y divide-border rounded-[12px] border border-border bg-surface lg:grid-cols-5 lg:divide-x lg:divide-y-0">
-            {site.process.map((step, index) => (
-              <li key={step.title} className="flex flex-col p-6">
-                <span className="font-mono text-sm text-link">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <h3 className="mt-3 text-lg font-semibold text-text">{step.title}</h3>
-                <p className="fs-small mt-2 text-muted">{step.text}</p>
-              </li>
-            ))}
-          </ol>
+          <ProcessTimeline />
         </div>
       </section>
 
@@ -223,7 +248,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. Personal projects strip */}
+      {/* 6. Testimonials (rendered only when testimonials array has entries) */}
+      <TestimonialsSection />
+
+      {/* 7. Personal projects strip */}
       <section className="section-y" aria-labelledby="personal-projects-heading">
         <div className="container-site">
           <h2 id="personal-projects-heading">Personal projects</h2>

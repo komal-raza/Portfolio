@@ -34,13 +34,15 @@ export const site = {
   hero: {
     chip: 'Full-Stack Engineer · SaaS · Shopify Apps',
     title: 'Building ideas into scalable digital products',
-    subhead:
-      `Hi, I’m Komal, a full-stack engineer based in Pakistan. Working ${experienceSince}, I’ve built Shopify apps, multi-tenant SaaS platforms and LMS products for merchants, education organisations and product teams in the USA and Australia, from the React interface to the PostgreSQL database, billing and background jobs.`,
+    leadIn: 'Hi, I’m Komal',
+    subhead: `, a full-stack engineer in Pakistan building Shopify apps, multi-tenant SaaS platforms and LMS products ${experienceSince} for clients in the USA and Australia.`,
   },
 
   cta: {
     label: 'Start Project',
     href: '/contact',
+    secondaryLabel: 'View Work',
+    secondaryHref: '/projects',
     bandTitle: 'Have a project in mind?',
     bandText:
       'Tell me what you want to build. I will reply by email with questions or a short plan for next steps.',
@@ -51,31 +53,32 @@ export const site = {
     { label: 'About', href: '/about' },
     { label: 'Services', href: '/services' },
     { label: 'Projects', href: '/projects' },
+    { label: 'Certificates', href: '/certificates' },
     { label: 'Resume', href: '/resume' },
     { label: 'Contact', href: '/contact' },
   ] satisfies NavItem[],
 
-  /** Steps shown in "How I work". The only numbered section on the site. */
+  /** Steps shown in "How I work". */
   process: [
     {
       title: 'Discover',
-      text: 'We walk through your users, roles and the workflow you run today, and I write it up as a short scope you can approve.',
+      text: 'Walk through your users, roles and workflow to agree on a clear scope.',
     },
     {
       title: 'Design',
-      text: 'I plan the data model, permissions and screens before writing features, so changes are cheap while they are still on paper.',
+      text: 'Plan the PostgreSQL schema, permissions and screens before coding.',
     },
     {
       title: 'Build',
-      text: 'I ship in small increments to a staging URL you can click through, with the backend, frontend and integrations built together.',
+      text: 'Ship backend, frontend and integrations in small staging increments.',
     },
     {
       title: 'Launch',
-      text: 'I handle deployment, environment setup and App Store or production release, and walk your team through the finished product.',
+      text: 'Deploy to production or the Shopify App Store and onboard your team.',
     },
     {
       title: 'Support',
-      text: 'After launch I fix issues, watch background jobs and webhooks, and add the next features as your users ask for them.',
+      text: 'Monitor background jobs and webhooks, fix issues and ship next features.',
     },
   ],
 

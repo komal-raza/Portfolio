@@ -20,20 +20,15 @@ export function Footer() {
         <nav aria-label="Footer">
           <h2 className="font-heading text-sm font-semibold text-text">Pages</h2>
           <ul className="mt-4 flex flex-col gap-2.5">
-            {site.nav.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className="fs-small text-muted no-underline hover:text-text">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-            {certificates.length > 0 && (
-              <li>
-                <Link href="/certificates" className="fs-small text-muted no-underline hover:text-text">
-                  Certificates
-                </Link>
-              </li>
-            )}
+            {site.nav
+              .filter((item) => item.href !== '/certificates' || certificates.length > 0)
+              .map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="fs-small text-muted no-underline hover:text-text">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
           </ul>
         </nav>
 

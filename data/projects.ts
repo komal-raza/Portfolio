@@ -396,6 +396,10 @@ export function formatClientLine(project: Project): string | undefined {
   return `Client: ${project.clientRegion} · Delivered through ${via}`
 }
 
+export function getLiveLink(project: Project): { label: string; href: string } | undefined {
+  return project.links?.find((link) => !/github\.com/i.test(link.href))
+}
+
 export function getUniqueClientRegions(): string[] {
   const seen = new Set<string>()
   for (const project of projects) {
@@ -403,4 +407,6 @@ export function getUniqueClientRegions(): string[] {
   }
   return Array.from(seen)
 }
+
+
 

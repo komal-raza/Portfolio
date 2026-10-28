@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import { services } from '@/data/services'
 import { getProject } from '@/data/projects'
-import { site } from '@/data/site'
 import { pageMetadata } from '@/lib/seo'
 import { CtaBand } from '@/components/ui/cta-band'
+import { ProcessTimeline } from '@/components/sections/process-timeline'
 
 export const metadata = pageMetadata({
   title: 'Services',
@@ -17,10 +17,14 @@ export default function ServicesOverviewPage() {
     <>
       <section className="section-y border-b border-border">
         <div className="container-site">
-          <h1>Services</h1>
+          <h1>Services for your next product</h1>
           <p className="lead mt-6">
             I take on full-product builds and focused backend or integration milestones. Every project starts with a written scope and ships in small increments to a staging URL you can review.
           </p>
+          <span className=" font-heading text-[0.9375rem] font-semibold text-link underline"
+          >
+            All services are delivered remotely.
+          </span>
         </div>
       </section>
 
@@ -96,17 +100,7 @@ export default function ServicesOverviewPage() {
             The same five-step rhythm across Shopify apps, SaaS platforms and backend engagements.
           </p>
 
-          <ol className="mt-10 grid divide-y divide-border rounded-[12px] border border-border bg-surface lg:grid-cols-5 lg:divide-x lg:divide-y-0">
-            {site.process.map((step, index) => (
-              <li key={step.title} className="flex flex-col p-6">
-                <span className="font-mono text-sm text-link">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <h3 className="mt-3 text-lg font-semibold text-text">{step.title}</h3>
-                <p className="fs-small mt-2 text-muted">{step.text}</p>
-              </li>
-            ))}
-          </ol>
+          <ProcessTimeline />
         </div>
       </section>
 

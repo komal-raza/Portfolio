@@ -2,10 +2,12 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { ExternalLink } from 'lucide-react'
 import {
   caseStudies,
   formatClientLine,
   formatProjectPeriod,
+  getLiveLink,
   getNextCaseStudy,
   getProject,
 } from '@/data/projects'
@@ -72,7 +74,21 @@ export default async function CaseStudyPage({
             / <span className="text-text">{project.name}</span>
           </p>
 
-          <h1 className="mt-4">{project.name}</h1>
+          <div className="mt-4 flex items-start justify-between gap-4">
+            <h1>{project.name}</h1>
+            {getLiveLink(project) && (
+              <a
+                href={getLiveLink(project)!.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open ${project.name} (${getLiveLink(project)!.label}) in new tab`}
+                title={getLiveLink(project)!.label}
+                className="mt-1 inline-flex size-10 shrink-0 items-center justify-center rounded-[8px] border border-border bg-surface text-link transition-colors hover:border-link hover:text-text"
+              >
+                <ExternalLink aria-hidden="true" strokeWidth={1.75} className="size-5" />
+              </a>
+            )}
+          </div>
           <p className="lead mt-6">{project.summary}</p>
 
           {project.links && project.links.length > 0 && (

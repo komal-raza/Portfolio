@@ -6,8 +6,11 @@ import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { ChevronDown, Menu, X } from 'lucide-react'
 import { site } from '@/data/site'
 import { services } from '@/data/services'
+import { certificates } from '@/data/certificates'
 import { ButtonLink } from '@/components/ui/button-link'
 import { cn } from '@/lib/utils'
+
+const navItems = site.nav.filter((item) => item.href !== '/certificates' || certificates.length > 0)
 
 const serviceLinks = [
   { label: 'All services', href: '/services' },
@@ -58,7 +61,7 @@ export function Navbar() {
 
         <nav aria-label="Main" className="hidden lg:block">
           <ul className="flex items-center gap-1">
-            {site.nav.map((item) =>
+            {navItems.map((item) =>
               item.href === '/services' ? (
                 <li key={item.href}>
                   <ServicesDropdown active={isActive(pathname, '/services')} pathname={pathname} />
@@ -300,7 +303,7 @@ function MobileMenu({
         </div>
         <nav aria-label="Mobile" className="container-site py-8">
           <ul className="flex flex-col">
-            {site.nav.map((item) => (
+            {navItems.map((item) => (
               <li key={item.href} className="border-b border-border">
                 <Link
                   href={item.href}

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { formatClientLine, formatProjectPeriod, type Project } from '@/data/projects'
+import { ExternalLink } from 'lucide-react'
+import { formatClientLine, formatProjectPeriod, getLiveLink, type Project } from '@/data/projects'
 import type { Screenshot } from '@/lib/screenshots'
 import { BrowserFrame } from '@/components/ui/device-frame'
 import { cn } from '@/lib/utils'
@@ -52,7 +53,21 @@ export function FeaturedProjectRows({ items }: { items: ProjectWithCover[] }) {
               {formatClientLine(project) && (
                 <p className="fs-small mt-1 text-muted">{formatClientLine(project)}</p>
               )}
-              <h3 className="mt-2 text-2xl font-bold text-text md:text-[1.75rem]">{project.name}</h3>
+              <div className="mt-2 flex items-start justify-between gap-4">
+                <h3 className="text-2xl font-bold text-text md:text-[1.75rem]">{project.name}</h3>
+                {getLiveLink(project) && (
+                  <a
+                    href={getLiveLink(project)!.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open ${project.name} (${getLiveLink(project)!.label}) in new tab`}
+                    title={getLiveLink(project)!.label}
+                    className="mt-0.5 inline-flex size-9 shrink-0 items-center justify-center rounded-[8px] border border-border bg-surface text-link transition-colors hover:border-link hover:text-text"
+                  >
+                    <ExternalLink aria-hidden="true" strokeWidth={1.75} className="size-4" />
+                  </a>
+                )}
+              </div>
               {project.status && (
                 <p className="fs-small mt-1 text-muted">{project.status}</p>
               )}

@@ -36,7 +36,17 @@ export default function CertificatesPage() {
                     <span>{cert.issuer}</span>
                     {cert.date ? ` · ${cert.date}` : ''}
                   </div>
-                  <div className="md:text-right">
+                  <div className="flex flex-wrap items-center gap-4 md:justify-end">
+                    {cert.fileUrl && (
+                      <a
+                        href={cert.fileUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="fs-small text-muted underline hover:text-text"
+                      >
+                        View PDF
+                      </a>
+                    )}
                     {cert.credentialUrl && (
                       <a
                         href={cert.credentialUrl}
@@ -61,3 +71,4 @@ export default function CertificatesPage() {
     </>
   )
 }
+

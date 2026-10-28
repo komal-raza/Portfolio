@@ -15,7 +15,7 @@ export function CtaBand({
   return (
     <section className="section-y border-t border-border">
       <div className="container-site">
-        <div className="mx-auto flex max-w-2xl flex-col items-center rounded-[12px] border border-border bg-surface px-6 py-12 text-center md:px-12 md:py-16">
+        <div className=" flex w-full flex-col items-center rounded-[12px] border-b border-border bg-surface px-6 py-12 text-center shadow-[0_8px_24px_-12px_#000000] md:px-12 md:py-16">
           <h2>{title}</h2>
           <p className="lead mt-4 text-center">{text}</p>
           <div className="mt-8">
@@ -26,4 +26,5 @@ export function CtaBand({
     </section>
   )
 }
+
 
