@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { site } from '@/data/site'
 import { services } from '@/data/services'
-import { featuredProjects, personalProjects } from '@/data/projects'
+import { featuredProjects, getUniqueClientRegions, personalProjects } from '@/data/projects'
 import { getCoverScreenshot, getScreenshot } from '@/lib/screenshots'
 import { pageMetadata, personJsonLd } from '@/lib/seo'
 import { ButtonLink } from '@/components/ui/button-link'
@@ -170,6 +170,11 @@ export default function HomePage() {
         <div className="container-site">
           <div className="flex flex-col justify-between gap-4 pb-10 md:flex-row md:items-end">
             <div>
+              {getUniqueClientRegions().length >= 2 && (
+                <p className="fs-small mb-2 font-medium text-muted">
+                  Delivered for clients in {getUniqueClientRegions().join(' and ')}
+                </p>
+              )}
               <h2 id="featured-work-heading">Featured work</h2>
               <p className="lead mt-3">
                 Production Shopify apps, multi-tenant SaaS platforms and an LMS used across education centres.

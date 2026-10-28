@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import type { Project } from '@/data/projects'
+import { formatClientLine, type Project } from '@/data/projects'
 import type { Screenshot } from '@/lib/screenshots'
 import { BrowserFrame } from '@/components/ui/device-frame'
 import { cn } from '@/lib/utils'
@@ -49,6 +49,9 @@ export function FeaturedProjectRows({ items }: { items: ProjectWithCover[] }) {
                 {project.type}
                 {project.year ? ` · ${project.year}` : ''}
               </p>
+              {formatClientLine(project) && (
+                <p className="fs-small mt-1 text-muted">{formatClientLine(project)}</p>
+              )}
               <h3 className="mt-2 text-2xl font-bold text-text md:text-[1.75rem]">{project.name}</h3>
               {project.status && (
                 <p className="fs-small mt-1 text-muted">{project.status}</p>

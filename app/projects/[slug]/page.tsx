@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { caseStudies, getNextCaseStudy, getProject } from '@/data/projects'
+import { caseStudies, formatClientLine, getNextCaseStudy, getProject } from '@/data/projects'
 import { getCoverScreenshot, getScreenshots } from '@/lib/screenshots'
 import { pageMetadata } from '@/lib/seo'
 import { BrowserFrame } from '@/components/ui/device-frame'
@@ -110,6 +110,12 @@ export default async function CaseStudyPage({
                 <dd className="mt-1 font-heading text-sm font-semibold text-text">
                   {project.status}
                 </dd>
+              </div>
+            )}
+            {formatClientLine(project) && (
+              <div className="sm:col-span-2 lg:col-span-4 border-t border-border pt-4">
+                <dt className="sr-only">Client delivery</dt>
+                <dd className="fs-small text-muted">{formatClientLine(project)}</dd>
               </div>
             )}
           </dl>

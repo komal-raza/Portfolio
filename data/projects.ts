@@ -24,6 +24,8 @@ export type Project = {
   type: string
   role: string
   status?: string
+  clientRegion?: string
+  deliveredThrough?: string
   /** One line: what the client got / the problem it solves. */
   summary: string
   problem?: string
@@ -48,6 +50,7 @@ export const projects: Project[] = [
     type: 'Multi-tenant LMS, client project',
     role: 'Full-stack developer, team of two',
     status: 'Deployed on Vercel and Render',
+    deliveredThrough: 'LeoaTech',
     summary:
       'A multi-tenant learning management system that runs a Quran education organisation’s classes, homework marking, fees and reports across its centres.',
     problem:
@@ -125,6 +128,7 @@ export const projects: Project[] = [
     type: 'Public Shopify app',
     role: 'Full-stack Shopify app developer, team of four',
     status: 'Live on the Shopify App Store',
+    deliveredThrough: 'LeoaTech',
     summary:
       'A Shopify app that lets merchants collect a waitlist and run viral referral campaigns before a product goes live.',
     problem:
@@ -178,6 +182,7 @@ export const projects: Project[] = [
     type: 'Private custom Shopify app',
     role: 'Shopify full-stack app developer, team of three',
     status: 'Private app for one merchant',
+    deliveredThrough: 'LeoaTech',
     summary:
       'A custom Shopify app that gives every product variant its own images and video, managed by non-technical staff from one dashboard.',
     problem:
@@ -231,6 +236,7 @@ export const projects: Project[] = [
     year: '2024 to present',
     type: 'Multi-tenant SaaS platform',
     role: 'Full-stack engineer',
+    deliveredThrough: 'LeoaTech',
     summary:
       'A multi-tenant platform where every library gets its own subdomain, automatic fines and reminders, and Stripe payments.',
     problem:
@@ -370,3 +376,18 @@ export function getNextCaseStudy(slug: string) {
 export function projectHref(project: Project) {
   return project.caseStudy ? `/projects/${project.slug}` : project.links?.[0]?.href ?? '/projects'
 }
+
+export function formatClientLine(project: Project): string | undefined {
+  if (!project.clientRegion) return undefined
+  const via = project.deliveredThrough ?? 'LeoaTech'
+  return `Client: ${project.clientRegion} · Delivered through ${via}`
+}
+
+export function getUniqueClientRegions(): string[] {
+  const seen = new Set<string>()
+  for (const project of projects) {
+    if (project.clientRegion) seen.add(project.clientRegion)
+  }
+  return Array.from(seen)
+}
+
