@@ -4,13 +4,14 @@ import Link from 'next/link'
 import { site } from '@/data/site'
 import { services } from '@/data/services'
 import { featuredProjects, personalProjects } from '@/data/projects'
-import { getScreenshot } from '@/lib/screenshots'
+import { getCoverScreenshot, getScreenshot } from '@/lib/screenshots'
 import { pageMetadata, personJsonLd } from '@/lib/seo'
 import { ButtonLink } from '@/components/ui/button-link'
 import { BrowserFrame, PhoneFrame } from '@/components/ui/device-frame'
 import { CtaBand } from '@/components/ui/cta-band'
 import { FeaturedProjectRows } from '@/components/projects/featured-rows'
 import { CompactProjectList } from '@/components/projects/compact-list'
+import { TechStackGrid } from '@/components/sections/tech-stack'
 
 export const metadata = pageMetadata({
   description: site.description,
@@ -42,7 +43,7 @@ export default function HomePage() {
   const featuredWithCovers = featuredProjects.map((project) => ({
     project,
     cover: project.screens
-      ? getScreenshot(project.screens.folder, project.screens.cover, project.name)
+      ? getCoverScreenshot(project.screens.folder, project.screens.cover, project.name)
       : undefined,
   }))
 
@@ -231,23 +232,7 @@ export default function HomePage() {
             Tools and APIs I use in production across client and product work.
           </p>
 
-          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {site.stack.map((group) => (
-              <div key={group.group} className="rounded-[12px] border border-border bg-surface p-6">
-                <h3 className="text-lg font-semibold text-text">{group.group}</h3>
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <li
-                      key={item}
-                      className="rounded-[8px] border border-border bg-bg px-2.5 py-1 font-mono text-xs text-text"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          <TechStackGrid />
         </div>
       </section>
 

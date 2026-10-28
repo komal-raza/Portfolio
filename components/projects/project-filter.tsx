@@ -11,24 +11,38 @@ const filters: Filter[] = ['All', ...projectCategories]
 
 export function ProjectFilter({
   featured,
+  mini,
   secondary,
 }: {
   featured: ProjectWithCover[]
+  mini: ProjectWithCover[]
   secondary: Project[]
 }) {
   const [active, setActive] = useState<Filter>('All')
 
   const filteredFeatured =
-    active === 'All' ? featured : featured.filter(({ project }) => project.category === active)
+    active === 'All'
+      ? featured
+      : active === 'Mini Projects'
+        ? []
+        : featured.filter(({ project }) => project.category === active)
+
+  const filteredMini =
+    active === 'All' || active === 'Mini Projects'
+      ? mini
+      : mini.filter(({ project }) => project.category === active)
+
   const filteredSecondary =
-    active === 'All' ? secondary : secondary.filter((project) => project.category === active)
+    active === 'All' || active === 'Mini Projects'
+      ? secondary
+      : secondary.filter((project) => project.category === active)
 
   return (
     <div>
       <div
         role="toolbar"
         aria-label="Filter projects by category"
-        className="flex flex-wrap gap-2 pb-10"
+        className="flex flex-wrap gap-2.5 pb-10"
       >
         {filters.map((filter) => {
           const selected = active === filter
@@ -57,16 +71,32 @@ export function ProjectFilter({
         </section>
       )}
 
-      {filteredSecondary.length > 0 && (
+      {filteredMini.length > 0 && (
         <section
-          aria-label="Additional and personal projects"
+          aria-label="Mini projects"
           className={cn(filteredFeatured.length > 0 && 'mt-16')}
         >
-          <h2 className="mb-6 text-xl font-bold text-text">Personal and open-source work</h2>
+          {active === 'All' && (
+            <div className="mb-8">
+              <h2 className="text-2xl font-bold text-text">Mini projects</h2>
+              <p className="lead mt-2">
+                Full-stack Next.js and TypeScript builds with admin dashboards and live workflows.
+              </p>
+            </div>
+          )}
+          <FeaturedProjectRows items={filteredMini} />
+        </section>
+      )}
+
+      {filteredSecondary.length > 0 && (
+        <section
+          aria-label="Other repositories"
+          className={cn((filteredFeatured.length > 0 || filteredMini.length > 0) && 'mt-16')}
+        >
+          <h2 className="mb-6 text-xl font-bold text-text">Open-source repository</h2>
           <CompactProjectList projects={filteredSecondary} />
         </section>
       )}
     </div>
   )
 }
-

@@ -1,6 +1,6 @@
-export type ProjectCategory = 'Shopify' | 'SaaS' | 'LMS' | 'Personal'
+export type ProjectCategory = 'Shopify' | 'SaaS' | 'LMS' | 'Mini Projects'
 
-export const projectCategories: ProjectCategory[] = ['Shopify', 'SaaS', 'LMS', 'Personal']
+export const projectCategories: ProjectCategory[] = ['Shopify', 'SaaS', 'LMS', 'Mini Projects']
 
 export type ProjectScreens = {
   /** Folder inside public/ProjectImages. */
@@ -104,7 +104,7 @@ export const projects: Project[] = [
       'The organisation’s centres run enrollment, attendance, homework marking and finance in one system instead of paper registers. Teachers can mark audio homework outside class hours, and guardians see progress as it is recorded.',
     screens: {
       folder: 'quranfoundation-lms',
-      cover: 'admin-portal/admin-home.png',
+      cover: 'main.png',
       secondary: 'manager-portal/manager-enrollments.png',
       groupLabels: {
         'admin-portal': 'Super Admin portal',
@@ -164,7 +164,7 @@ export const projects: Project[] = [
     links: [{ label: 'Shopify App Store listing', href: 'https://apps.shopify.com/viral-launch' }],
     screens: {
       folder: 'xychros-launch-your-product',
-      cover: 'viral-app.png',
+      cover: 'main.jpeg',
       secondary: 'viral-app2.png',
     },
   },
@@ -218,7 +218,7 @@ export const projects: Project[] = [
     links: [{ label: 'Merchant storefront', href: 'https://buffaloriver.co' }],
     screens: {
       folder: 'buffalo-river-co',
-      cover: '4-productVariantDetailPage.png',
+      cover: 'main.png',
       secondary: '5-GalleryListiPage.png',
     },
   },
@@ -270,21 +270,21 @@ export const projects: Project[] = [
     links: [{ label: 'Live site', href: 'https://my-books-library-client.vercel.app/' }],
     screens: {
       folder: 'leoatech-library-app',
-      cover: 'admin-home.png',
+      cover: 'main.png',
       secondary: 'admin-bookings.png',
     },
   },
   {
     slug: 'agent-skills-manager',
     name: 'Agentic Skills Manager',
-    category: 'Personal',
+    category: 'Mini Projects',
     featured: false,
     caseStudy: true,
-    type: 'Personal project',
+    type: 'Mini project · Next.js & TypeScript',
     role: 'Solo: design, frontend and backend',
     status: 'Deployed on Vercel',
     summary:
-      'A place for developers to add, share or keep private the Skills.md instruction files they give coding agents.',
+      'A web app for developers to add, share or keep private the Skills.md instruction files they give coding agents.',
     features: [
       {
         title: 'Public and private skills',
@@ -303,7 +303,7 @@ export const projects: Project[] = [
         text: 'Typed data access with Prisma against a serverless Neon Postgres database.',
       },
     ],
-    stack: ['Next.js', 'TypeScript', 'Prisma', 'Neon Postgres', 'Vercel'],
+    stack: ['Next.js', 'TypeScript', 'Prisma', 'Neon Postgres', 'Tailwind CSS', 'Vercel'],
     links: [{ label: 'Source on GitHub', href: 'https://github.com/komal-raza/nextjs-agent-skills-manager' }],
     screens: {
       folder: 'agent-skills-manager',
@@ -312,13 +312,14 @@ export const projects: Project[] = [
   },
   {
     slug: 'eluara-ecommerce-app',
-    name: 'Eluara e-commerce app',
-    category: 'Personal',
+    name: 'Eluara E-Commerce App',
+    category: 'Mini Projects',
     featured: false,
     caseStudy: true,
-    type: 'Personal project',
+    type: 'Mini project · Next.js & TypeScript',
     role: 'Solo',
-    summary: 'An e-commerce storefront with a product-management dashboard.',
+    summary:
+      'An e-commerce storefront with collections, cart, Stripe checkout and an admin product-management dashboard.',
     features: [
       {
         title: 'Product-management dashboard',
@@ -329,7 +330,7 @@ export const projects: Project[] = [
         text: 'Collections, product detail pages, cart and a Stripe checkout flow, with mobile layouts for each step.',
       },
     ],
-    stack: ['Next.js', 'TypeScript', 'Stripe'],
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Stripe'],
     screens: {
       folder: 'Eluara-ecommerce-app',
       cover: 'HeroSection.png',
@@ -338,7 +339,7 @@ export const projects: Project[] = [
   {
     slug: 'portfolio',
     name: 'This portfolio',
-    category: 'Personal',
+    category: 'Mini Projects',
     featured: false,
     caseStudy: false,
     type: 'Personal project',
@@ -351,7 +352,10 @@ export const projects: Project[] = [
 ]
 
 export const featuredProjects = projects.filter((project) => project.featured)
-export const personalProjects = projects.filter((project) => project.category === 'Personal')
+export const miniProjects = projects.filter(
+  (project) => project.category === 'Mini Projects' && Boolean(project.screens),
+)
+export const personalProjects = projects.filter((project) => project.category === 'Mini Projects')
 export const caseStudies = projects.filter((project) => project.caseStudy)
 
 export function getProject(slug: string) {
@@ -366,4 +370,3 @@ export function getNextCaseStudy(slug: string) {
 export function projectHref(project: Project) {
   return project.caseStudy ? `/projects/${project.slug}` : project.links?.[0]?.href ?? '/projects'
 }
-

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { caseStudies, getNextCaseStudy, getProject } from '@/data/projects'
-import { getScreenshot, getScreenshots } from '@/lib/screenshots'
+import { getCoverScreenshot, getScreenshots } from '@/lib/screenshots'
 import { pageMetadata } from '@/lib/seo'
 import { BrowserFrame } from '@/components/ui/device-frame'
 import { ProjectGallery } from '@/components/projects/gallery'
@@ -40,7 +40,7 @@ export default async function CaseStudyPage({
   if (!project || !project.caseStudy) notFound()
 
   const heroScreen = project.screens
-    ? getScreenshot(project.screens.folder, project.screens.cover, project.name)
+    ? getCoverScreenshot(project.screens.folder, project.screens.cover, project.name)
     : undefined
 
   const galleryScreens = project.screens

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getService, services } from '@/data/services'
 import { getProject } from '@/data/projects'
-import { getScreenshot } from '@/lib/screenshots'
+import { getCoverScreenshot } from '@/lib/screenshots'
 import { pageMetadata } from '@/lib/seo'
 import { ButtonLink } from '@/components/ui/button-link'
 import { CtaBand } from '@/components/ui/cta-band'
@@ -45,7 +45,7 @@ export default async function ServiceDetailPage({
     .map((project) => ({
       project,
       cover: project.screens
-        ? getScreenshot(project.screens.folder, project.screens.cover, project.name)
+        ? getCoverScreenshot(project.screens.folder, project.screens.cover, project.name)
         : undefined,
     }))
 

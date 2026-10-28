@@ -17,9 +17,16 @@ export type Screenshot = {
 const PUBLIC_DIR = path.join(process.cwd(), 'public')
 const SCREENSHOT_ROOT = 'ProjectImages'
 const IMAGE_EXT = /\.(png|jpe?g|webp|gif|avif)$/i
+const MAIN_FILE = /^main\.(png|jpe?g|webp|gif|avif)$/i
 
 const collator = new Intl.Collator('en', { numeric: true, sensitivity: 'base' })
-export const naturalSort = (a: string, b: string) => collator.compare(a, b)
+export const naturalSort = (a: string, b: string) => {
+  const aIsMain = MAIN_FILE.test(path.basename(a))
+  const bIsMain = MAIN_FILE.test(path.basename(b))
+  if (aIsMain && !bIsMain) return -1
+  if (!aIsMain && bIsMain) return 1
+  return collator.compare(a, b)
+}
 
 /** Display-only spelling fixes for filenames. The files themselves are never touched. */
 const WORD_FIXES: Record<string, string> = {
@@ -35,6 +42,7 @@ const WORD_FIXES: Record<string, string> = {
 /** "7-EditMediaAssetsAssociatedWithProductVariant.png" -> "Edit media assets associated with product variant" */
 export function labelFromFilename(file: string) {
   let name = path.basename(file).replace(IMAGE_EXT, '')
+  if (name.toLowerCase() === 'main') return 'Main overview'
   name = name.replace(/^\d+[-_.\s]+/, '') // leading sort number
   name = name.replace(/^localhost[_-]\d+[_-]?/i, '') // dev-server captures
   name = name.replace(/^[a-z0-9-]+(\.[a-z0-9-]+)+[_-]/i, '') // "sub.domain.site_cart" -> "cart"
@@ -125,7 +133,7 @@ function toScreenshot(relativeFile: string, projectName: string, group?: string)
 }
 
 /**
- * Every image in `public/ProjectImages/<folder>`, natural-sorted.
+ * Every image in `public/ProjectImages/<folder>`, natural-sorted (with `main.*` first).
  * One level of sub-folders is supported (each becomes a group, in `groupOrder` or natural order).
  * Adding a file to the folder adds it to the gallery on the next build.
  */
@@ -153,7 +161,8 @@ export function getScreenshots(
       return naturalSort(a, b)
     })
 
-  const shots = files.map((file) => toScreenshot(path.join(folder, file), projectName))
+  const rootGroup = subfolders.length > 0 ? 'Overview' : undefined
+  const shots = files.map((file) => toScreenshot(path.join(folder, file), projectName, rootGroup))
 
   for (const sub of subfolders) {
     const group = groupLabels[sub] ?? labelFromFilename(sub)
@@ -175,6 +184,23 @@ export function getScreenshot(folder: string, file: string, projectName: string,
   return toScreenshot(path.join(folder, file), projectName, group)
 }
 
+/**
+ * Resolves the cover screenshot for a project folder.
+ * Prefers any file named `main.*` (e.g. `main.png`, `main.jpeg`) in the folder root,
+ * falling back to the configured `fallbackFile`.
+ */
+export function getCoverScreenshot(folder: string, fallbackFile: string, projectName: string) {
+  const dir = path.join(PUBLIC_DIR, SCREENSHOT_ROOT, folder)
+  if (fs.existsSync(dir)) {
+    const entries = fs.readdirSync(dir, { withFileTypes: true })
+    const mainEntry = entries.find((entry) => entry.isFile() && MAIN_FILE.test(entry.name))
+    if (mainEntry) {
+      return toScreenshot(path.join(folder, mainEntry.name), projectName)
+    }
+  }
+  return getScreenshot(folder, fallbackFile, projectName)
+}
+
 /** All screenshot folders, so QA can confirm each one is mapped to a project. */
 export function listScreenshotFolders() {
   const root = path.join(PUBLIC_DIR, SCREENSHOT_ROOT)
@@ -184,4 +210,3 @@ export function listScreenshotFolders() {
     .filter((entry) => entry.isDirectory())
     .map((entry) => entry.name)
 }
-
