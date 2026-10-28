@@ -15,7 +15,7 @@ export type TimelineEntry = {
   summary?: string
 }
 
-const experienceSince = 'since 2023'
+const experienceSince = 'since 2022'
 
 export const site = {
   name: 'Komal Raza',
@@ -34,8 +34,8 @@ export const site = {
   hero: {
     chip: 'Full-Stack Engineer · SaaS · Shopify Apps',
     title: 'Building ideas into scalable digital products',
-    leadIn: 'Hi, I’m Komal',
-    subhead: `, a full-stack engineer in Pakistan building Shopify apps, multi-tenant SaaS platforms and LMS products ${experienceSince} for clients in the USA and Australia.`,
+    leadIn: 'Hi, I’m Komal Raza',
+    subhead: `, a full-stack engineer with 4 years of experience building real-world products including Shopify apps, multi-tenant SaaS platforms and LMS products ${experienceSince} for clients across Pakistan, USA and Australia via remote delivery.`,
   },
 
   cta: {

@@ -15,3 +15,4 @@ export const testimonials: Testimonial[] = [
       'Komal owns complex features end to end — from PostgreSQL schemas and BullMQ background pipelines to Shopify billing and multi-portal React interfaces. She consistently turns intricate business workflows into reliable production software.',
   },
 ]
+

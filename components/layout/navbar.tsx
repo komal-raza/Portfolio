@@ -46,8 +46,10 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        'fixed inset-x-0 top-0 z-50 border-b bg-bg transition-colors',
-        scrolled ? 'border-border' : 'border-transparent',
+        'fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ease-out',
+        scrolled
+          ? 'border-border/80 bg-[rgba(10,19,40,0.72)] shadow-[0_12px_30px_rgba(10,19,40,0.28)] backdrop-blur-xl backdrop-saturate-150'
+          : 'border-transparent bg-[rgba(10,19,40,0.18)] shadow-[0_8px_24px_rgba(10,19,40,0.12)] backdrop-blur-md',
       )}
     >
       <div className="container-site flex h-[72px] items-center justify-between gap-6">
