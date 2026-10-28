@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Case Study UI – Quran Foundation LMS</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#fbfaf6;--card:#fff;--tx:#1b2a24;--mut:#667a71;--pri:#0f6b4f;--gold:#c8962e;--bd:#e3e8e4;--soft:#eaf4ef}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1714;--card:#17221d;--tx:#e8f0ec;--mut:#9bb0a6;--pri:#4cc79b;--gold:#e0b04f;--bd:#27362f;--soft:#1c2c25}}
+:root[data-theme="dark"]{--bg:#0f1714;--card:#17221d;--tx:#e8f0ec;--mut:#9bb0a6;--pri:#4cc79b;--gold:#e0b04f;--bd:#27362f;--soft:#1c2c25}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+.w{max-width:960px;margin:0 auto;padding:24px 18px}
+section{margin:44px 0}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.15;margin:8px 0}
+h2{font-size:22px;margin:0 0 6px}
+.lbl{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700}
+p{color:var(--mut);margin:6px 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chip{background:var(--soft);color:var(--pri);padding:4px 12px;border-radius:99px;font-size:13px;font-weight:600}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:20px 0;padding:16px;background:var(--card);border:1px solid var(--bd);border-radius:14px}
+.meta b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--mut)}
+.img{display:flex;align-items:center;justify-content:center;text-align:center;border:2px dashed var(--bd);border-radius:14px;background:repeating-linear-gradient(45deg,var(--soft),var(--soft) 10px,transparent 10px,transparent 20px);color:var(--mut);font-size:14px;padding:16px;min-height:200px}
+.img.hero{min-height:320px}
+.note{margin-top:10px;font-size:13px;padding:8px 12px;border-left:3px solid var(--gold);background:var(--card);color:var(--mut);border-radius:0 8px 8px 0}
+.note b{color:var(--gold)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px}
+.card h3{margin:0 0 4px;font-size:16px}
+.stat{font-size:30px;font-weight:800;color:var(--pri)}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin:14px 0}
+.tab{border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:8px 16px;border-radius:99px;cursor:pointer;white-space:nowrap;font:inherit;font-size:14px}
+.tab.on{background:var(--pri);color:#fff;border-color:var(--pri)}
+.pane{display:none}.pane.on{display:grid;grid-template-columns:1fr 1.1fr;gap:18px;align-items:start}
+.pane ul{margin:8px 0;padding-left:18px;color:var(--mut)}.pane li{margin:4px 0}
+.flow{display:flex;gap:10px;flex-wrap:wrap}
+.step{flex:1;min-width:150px;text-align:center}
+.step i{display:flex;width:36px;height:36px;margin:0 auto 8px;border-radius:50%;background:var(--pri);color:#fff;align-items:center;justify-content:center;font-style:normal;font-weight:700}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--bd);padding:10px 18px;font-size:14px;display:flex;justify-content:space-between;gap:10px}
+.bar span{color:var(--mut)}
+@media(max-width:700px){.g2,.pane.on{grid-template-columns:1fr}}
+</style></head><body>
+<div class="bar"><b>← Back to Portfolio</b><span>Case Study layout (mockup)</span></div>
+<div class="w">
+
+<header>
+  <div class="lbl">Case Study · EdTech · Full-Stack</div>
+  <h1>Quran Foundation LMS</h1>
+  <p style="font-size:18px">Multi-tenant learning platform jahan admin, manager, teacher, student aur guardian ek hi system se classes, fees aur Quran recitation progress manage karte hain.</p>
+  <div class="chips"><span class="chip">Multi-tenant</span><span class="chip">5 Role Portals</span><span class="chip">Audio Homework</span><span class="chip">Live since 2026</span></div>
+  <div class="meta">
+    <div><b>Role</b>Full-Stack Engineer</div>
+    <div><b>Client</b>Educational Institute</div>
+    <div><b>Timeline</b>[X months]</div>
+    <div><b>Platform</b>Web (responsive)</div>
+  </div>
+  <div class="img hero">📷 HERO IMAGE: Laptop + phone mockup mein Super Admin dashboard (overview charts)</div>
+  <div class="note"><b>Tip:</b> Hero par sab se strong, clean screenshot lagayen. Mockup banane ke liye Figma ya mockuplabs/shots.so use kar sakti hain.</div>
+</header>
+
+<section>
+  <div class="lbl">01 · Problem</div>
+  <h2>Pehle kya masla tha?</h2>
+  <div class="g2">
+    <div class="card"><h3>Before</h3><p>Har center ki attendance, fees aur homework marking paper aur alag-alag sheets par hoti thi. Head office ko overall report nahi milti thi.</p></div>
+    <div class="card"><h3>Challenge</h3><p>Tajweed/Nazra ki marking word-by-word aur rule-by-rule hoti hai, aur students ki audio check karna manual aur time-consuming tha.</p></div>
+  </div>
+  <div class="note"><b>Tip:</b> 2-3 lines hi rakhen. Agar purani paper sheet ki photo ho to "Before" ke sath dikha den, comparison bohat effective lagta hai.</div>
+</section>
+
+<section>
+  <div class="lbl">02 · Solution</div>
+  <h2>Kya banaya?</h2>
+  <p>Ek hi platform, 5 portals. Har role ko sirf wohi nazar aata hai jo uske kaam ka hai.</p>
+  <div class="tabs" id="tabs"></div>
+  <div id="panes"></div>
+  <div class="note"><b>Tip:</b> Tabs se portal-wise screenshots dikhayen. Har tab mein 1 screenshot + 4-5 bullets, bas.</div>
+</section>
+
+<section>
+  <div class="lbl">03 · Signature Feature</div>
+  <h2>Audio Homework → Marks &amp; Remarks</h2>
+  <p>Ye aapka sab se unique feature hai, isko alag section dein.</p>
+  <div class="flow card">
+    <div class="step"><i>1</i><b>Student</b><p>Audio record/submit</p></div>
+    <div class="step"><i>2</i><b>Teacher / Manager</b><p>Portal par audio sunta hai</p></div>
+    <div class="step"><i>3</i><b>Marking</b><p>Word × Rule grid mein marks</p></div>
+    <div class="step"><i>4</i><b>Student</b><p>Marks + remarks dekhta hai</p></div>
+  </div>
+  <div class="g2" style="margin-top:14px">
+    <div class="img">📷 Teacher Marking Sheet screenshot</div>
+    <div class="img">📷 Student audio submit screen (mobile)</div>
+  </div>
+  <div class="note"><b>Tip:</b> Yahan 15-20 sec ka GIF/short video best rahegi: audio play → marks click → result.</div>
+</section>
+
+<section>
+  <div class="lbl">04 · My Role</div>
+  <h2>Mera kaam</h2>
+  <div class="g3">
+    <div class="card"><h3>🎨 UI/UX Design</h3><p>Portals ka design system aur wireframes</p></div>
+    <div class="card"><h3>⚙️ Backend</h3><p>REST APIs: finance, enrolment, classroom, attendance</p></div>
+    <div class="card"><h3>🗄️ Database</h3><p>Schema design, enrollment aur sibling/guardian handling</p></div>
+    <div class="card"><h3>🔐 Roles &amp; Permissions</h3><p>Role hierarchy aur access control</p></div>
+    <div class="card"><h3>🔔 Background Jobs</h3><p>Guardian notifications, WhatsApp credential sharing</p></div>
+    <div class="card"><h3>🚀 Deployment</h3><p>Docker, Vercel, Render</p></div>
+  </div>
+  <div class="note"><b>Tip:</b> Sirf wohi likhen jo aap ne khud kiya aur interview mein explain kar sakein.</div>
+</section>
+
+<section>
+  <div class="lbl">05 · Tech Stack</div>
+  <h2>Technologies</h2>
+  <div class="chips">
+    <span class="chip">React</span><span class="chip">Tailwind CSS</span><span class="chip">TanStack Query</span><span class="chip">Axios</span>
+    <span class="chip">Node / Express</span><span class="chip">Knex.js</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span>
+    <span class="chip">Docker</span><span class="chip">Vercel</span><span class="chip">Render</span><span class="chip">Bunny.net</span>
+  </div>
+  <div class="note"><b>Tip:</b> Logos wali icons row (Frontend / Backend / DevOps ke groups mein) zyada professional lagti hai.</div>
+</section>
+
+<section>
+  <div class="lbl">06 · Key Decisions</div>
+  <h2>Challenges &amp; kaise solve kiye</h2>
+  <div class="g2">
+    <div class="card"><h3>Siblings, ek guardian phone</h3><p>Same phone par enrollment fail hoti thi. Solution: sab users ek table mein, <code>is_minor</code> flag ke sath, guardian ek login se bachon ke profiles dekhta hai.</p></div>
+    <div class="card"><h3>Paper-style assessment</h3><p>Client ki paper sheets ko digital word × rule marking grid mein convert kiya.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="lbl">07 · Result</div>
+  <h2>Nateeja</h2>
+  <div class="g3">
+    <div class="card"><div class="stat">[X]</div><p>Centers manage ho rahe hain</p></div>
+    <div class="card"><div class="stat">[X]</div><p>Students onboarded</p></div>
+    <div class="card"><div class="stat">[X%]</div><p>Marking time mein kami</p></div>
+  </div>
+  <div class="note"><b>Tip:</b> [X] ki jagah sirf real, defensible numbers likhen. Na hon to "Live in production, 5 portals, 1 platform" jaisi facts likhen. Neeche Live Demo / GitHub / Next Project buttons dein.</div>
+</section>
+
+</div>
+<script>
+const D=[
+["Super Admin","Course, curriculum aur assignment content manage karna",["Centers ka overall comparison: reports, finances, enrollment, popular courses","Students enroll + bulk import","Account banne ke baad credentials WhatsApp par share","Roles &amp; permissions"]],
+["Center Manager","Ek center ka poora operation",["Classrooms aur class mein enrollment","Fee collection","Topics teachers mein divide karna, deadlines set karna","Staff, salaries aur donations record"]],
+["Teacher","Classes, attendance aur marking",["Assigned topics aur upcoming sessions","Session banana + attendance","Classwork (pichle topics bhi shamil)","Homework audio sun kar marks dena"]],
+["Student","Apni learning ka view",["Classroom, topics, teacher, published assignments","Attendance % aur course progress","Audio submission","Marks + remarks"]],
+["Guardian","Bachon ki progress",["Course-wise overall progress","Har class session ki daily progress","Ek login, multiple children"]]];
+const t=document.getElementById('tabs'),p=document.getElementById('panes');
+D.forEach((d,i)=>{
+ t.insertAdjacentHTML('beforeend',`<button class="tab${i?'':' on'}" data-i="${i}">${d[0]}</button>`);
+ p.insertAdjacentHTML('beforeend',`<div class="pane${i?'':' on'}"><div><h3 style="margin:0">${d[0]} Portal</h3><p>${d[1]}</p><ul>${d[2].map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="img">📷 ${d[0]} portal screenshot</div></div>`);
+});
+t.onclick=e=>{const b=e.target.closest('.tab');if(!b)return;const i=+b.dataset.i;
+ [...t.children].forEach((x,j)=>x.classList.toggle('on',j==i));
+ [...p.children].forEach((x,j)=>x.classList.toggle('on',j==i));};
+</script>
+</body></html>
