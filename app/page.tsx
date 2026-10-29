@@ -102,7 +102,7 @@ export default function HomePage() {
               {site.hero.title}
             </h1>
             <p
-              className="hero-seq mt-6 max-w-[52ch] text-[1.15rem] leading-[1.6] text-text"
+              className="hero-seq mt-6 max-w-[52ch] text-[1.15rem] text-subhead leading-[1.6] "
               style={seq(2)}
             >
               <span className="font-semibold">{site.hero.leadIn}</span>

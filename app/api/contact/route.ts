@@ -1,6 +1,9 @@
+import dns from 'node:dns'
 import { NextResponse } from 'next/server'
 import { contactSchema } from '@/lib/contact-schema'
 import { site } from '@/data/site'
+
+dns.setDefaultResultOrder('ipv4first')
 
 const WINDOW_MS = 10 * 60 * 1000 // 10 minutes
 const MAX_REQUESTS = 5
