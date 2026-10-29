@@ -44,57 +44,69 @@ export function Navbar() {
   }, [])
 
   return (
-    <header
-      className={cn(
-        'fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ease-out',
-        scrolled
-          ? 'border-border/80 bg-[rgba(10,19,40,0.72)] shadow-[0_12px_30px_rgba(10,19,40,0.28)] backdrop-blur-xl backdrop-saturate-150'
-          : 'border-transparent bg-[rgba(10,19,40,0.18)] shadow-[0_8px_24px_rgba(10,19,40,0.12)] backdrop-blur-md',
-      )}
-    >
-      <div className="container-site flex h-[72px] items-center justify-between gap-6">
-        <Link
-          href="/"
-          className="font-heading text-lg font-bold tracking-tight text-text no-underline"
-          aria-label={`${site.name}, home`}
-        >
-          {site.name}
-        </Link>
+    <>
+      <header
+        className={cn(
+          'fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ease-out',
+          scrolled
+            ? 'border-border/80 bg-[rgba(10,19,40,0.82)] shadow-[0_12px_30px_rgba(10,19,40,0.28)] backdrop-blur-xl backdrop-saturate-150'
+            : 'border-transparent bg-[rgba(10,19,40,0.55)] shadow-[0_8px_24px_rgba(10,19,40,0.12)] backdrop-blur-md',
+        )}
+      >
+        <div className="container-site flex h-[72px] items-center justify-between gap-6">
+          <Link
+            href="/"
+            className="font-heading text-lg font-bold tracking-tight text-text no-underline"
+            aria-label={`${site.name}, home`}
+          >
+            {site.name}
+          </Link>
 
-        <nav aria-label="Main" className="hidden lg:block">
-          <ul className="flex items-center gap-1">
-            {navItems.map((item) =>
-              item.href === '/services' ? (
-                <li key={item.href}>
-                  <ServicesDropdown active={isActive(pathname, '/services')} pathname={pathname} />
-                </li>
-              ) : (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    aria-current={isActive(pathname, item.href) ? 'page' : undefined}
-                    className={cn(
-                      'rounded-[8px] px-3 py-2 text-[0.9375rem] font-medium no-underline transition-colors',
-                      isActive(pathname, item.href) ? 'text-text' : 'text-muted hover:text-text',
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ),
-            )}
-          </ul>
-        </nav>
+          <nav aria-label="Main" className="hidden lg:block">
+            <ul className="flex items-center gap-1">
+              {navItems.map((item) =>
+                item.href === '/services' ? (
+                  <li key={item.href}>
+                    <ServicesDropdown active={isActive(pathname, '/services')} pathname={pathname} />
+                  </li>
+                ) : (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      aria-current={isActive(pathname, item.href) ? 'page' : undefined}
+                      className={cn(
+                        'rounded-[8px] px-3 py-2 text-[0.9375rem] font-medium no-underline transition-colors',
+                        isActive(pathname, item.href) ? 'text-text' : 'text-muted hover:text-text',
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ),
+              )}
+            </ul>
+          </nav>
 
-        <div className="hidden lg:block">
-          <ButtonLink href={site.cta.href} size="sm">
-            {site.cta.label}
-          </ButtonLink>
+          <div className="hidden lg:block">
+            <ButtonLink href={site.cta.href} size="sm">
+              {site.cta.label}
+            </ButtonLink>
+          </div>
+
+          <button
+            type="button"
+            aria-expanded={mobileOpen}
+            aria-label="Open menu"
+            onClick={() => setMobileOpen(true)}
+            className="-mr-2 flex size-11 items-center justify-center rounded-[8px] text-text lg:hidden"
+          >
+            <Menu aria-hidden="true" strokeWidth={1.5} className="size-6" />
+          </button>
         </div>
+      </header>
 
-        <MobileMenu open={mobileOpen} setOpen={setMobileOpen} pathname={pathname} />
-      </div>
-    </header>
+      <MobileMenu open={mobileOpen} setOpen={setMobileOpen} pathname={pathname} />
+    </>
   )
 }
 
@@ -226,12 +238,8 @@ function MobileMenu({
   pathname: string
 }) {
   const panelRef = useRef<HTMLDivElement>(null)
-  const toggleRef = useRef<HTMLButtonElement>(null)
-  const panelId = useId()
-
   const close = useCallback(() => {
     setOpen(false)
-    toggleRef.current?.focus()
   }, [setOpen])
 
   useEffect(() => {
@@ -267,81 +275,67 @@ function MobileMenu({
     }
   }, [open, close])
 
-  return (
-    <div className="lg:hidden">
-      <button
-        ref={toggleRef}
-        type="button"
-        aria-expanded={open}
-        aria-controls={panelId}
-        aria-label="Open menu"
-        onClick={() => setOpen(true)}
-        className="-mr-2 flex size-11 items-center justify-center rounded-[8px] text-text"
-      >
-        <Menu aria-hidden="true" strokeWidth={1.5} className="size-6" />
-      </button>
+  if (!open) return null
 
-      <div
-        ref={panelRef}
-        id={panelId}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Site menu"
-        hidden={!open}
-        className="fixed inset-0 z-[60] overflow-y-auto bg-bg"
-      >
-        <div className="container-site flex h-[72px] items-center justify-between border-b border-border">
-          <Link href="/" className="font-heading text-lg font-bold text-text no-underline" onClick={() => setOpen(false)}>
-            {site.name}
-          </Link>
-          <button
-            type="button"
-            aria-label="Close menu"
-            onClick={close}
-            className="-mr-2 flex size-11 items-center justify-center rounded-[8px] text-text"
-          >
-            <X aria-hidden="true" strokeWidth={1.5} className="size-6" />
-          </button>
-        </div>
-        <nav aria-label="Mobile" className="container-site py-8">
-          <ul className="flex flex-col">
-            {navItems.map((item) => (
-              <li key={item.href} className="border-b border-border">
-                <Link
-                  href={item.href}
-                  aria-current={isActive(pathname, item.href) ? 'page' : undefined}
-                  onClick={() => setOpen(false)}
-                  className={cn(
-                    'block py-4 font-heading text-2xl font-semibold no-underline',
-                    isActive(pathname, item.href) ? 'text-text' : 'text-muted',
-                  )}
-                >
-                  {item.label}
-                </Link>
-                {item.href === '/services' && (
-                  <ul className="-mt-1 mb-4 flex flex-col gap-1 pl-4">
-                    {services.map((service) => (
-                      <li key={service.slug}>
-                        <Link
-                          href={`/services/${service.slug}`}
-                          onClick={() => setOpen(false)}
-                          aria-current={pathname === `/services/${service.slug}` ? 'page' : undefined}
-                          className="block py-1.5 text-base text-muted no-underline hover:text-text"
-                        >
-                          {service.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
-          </ul>
-          <ButtonLink href={site.cta.href} className="mt-8 w-full" onClick={() => setOpen(false)}>
-            {site.cta.label}
-          </ButtonLink>
-        </nav>
+  return (
+    <div
+      ref={panelRef}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Site menu"
+      className="fixed inset-0 z-[70] overflow-y-auto bg-bg lg:hidden"
+    >
+      <div className="container-site flex h-[72px] items-center justify-between border-b border-border">
+        <Link href="/" className="font-heading text-lg font-bold text-text no-underline" onClick={() => setOpen(false)}>
+          {site.name}
+        </Link>
+        <button
+          type="button"
+          aria-label="Close menu"
+          onClick={close}
+          className="-mr-2 flex size-11 items-center justify-center rounded-[8px] text-text"
+        >
+          <X aria-hidden="true" strokeWidth={1.5} className="size-6" />
+        </button>
       </div>
+      <nav aria-label="Mobile" className="container-site py-8">
+        <ul className="flex flex-col">
+          {navItems.map((item) => (
+            <li key={item.href} className="border-b border-border">
+              <Link
+                href={item.href}
+                aria-current={isActive(pathname, item.href) ? 'page' : undefined}
+                onClick={() => setOpen(false)}
+                className={cn(
+                  'block py-4 font-heading text-2xl font-semibold no-underline',
+                  isActive(pathname, item.href) ? 'text-text' : 'text-muted',
+                )}
+              >
+                {item.label}
+              </Link>
+              {item.href === '/services' && (
+                <ul className="-mt-1 mb-4 flex flex-col gap-1 pl-4">
+                  {services.map((service) => (
+                    <li key={service.slug}>
+                      <Link
+                        href={`/services/${service.slug}`}
+                        onClick={() => setOpen(false)}
+                        aria-current={pathname === `/services/${service.slug}` ? 'page' : undefined}
+                        className="block py-1.5 text-base text-muted no-underline hover:text-text"
+                      >
+                        {service.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+        <ButtonLink href={site.cta.href} className="mt-8 w-full" onClick={() => setOpen(false)}>
+          {site.cta.label}
+        </ButtonLink>
+      </nav>
     </div>
   )
 }
